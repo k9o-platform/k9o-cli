@@ -1,0 +1,5343 @@
+{
+  "schema": 1,
+  "commands": [
+    {
+      "path": [
+        "ai",
+        "embed"
+      ],
+      "aliases": [],
+      "usage": "k9o ai embed <text> [<text>...] [--model <id>]",
+      "sample": "k9o ai embed <text>",
+      "description": "",
+      "positionals": [
+        {
+          "name": "text",
+          "optional": false
+        },
+        {
+          "name": "text",
+          "optional": true
+        }
+      ],
+      "flags": [
+        {
+          "name": "model",
+          "value": "<id>",
+          "optional": true
+        }
+      ],
+      "sdkMethods": [
+        "k9o.ai.embed()"
+      ],
+      "restRoutes": []
+    },
+    {
+      "path": [
+        "ai",
+        "generate"
+      ],
+      "aliases": [],
+      "usage": "k9o ai generate <prompt|-> [--model <id>] [--max-tokens N] [--temperature T]",
+      "sample": "k9o ai generate <prompt|->",
+      "description": "",
+      "positionals": [
+        {
+          "name": "prompt|-",
+          "optional": false
+        }
+      ],
+      "flags": [
+        {
+          "name": "model",
+          "value": "<id>",
+          "optional": true
+        },
+        {
+          "name": "max-tokens",
+          "value": "N",
+          "optional": true
+        },
+        {
+          "name": "temperature",
+          "value": "T",
+          "optional": true
+        }
+      ],
+      "sdkMethods": [
+        "k9o.ai.generate()"
+      ],
+      "restRoutes": []
+    },
+    {
+      "path": [
+        "analytics",
+        "create"
+      ],
+      "aliases": [
+        "dataset",
+        "datasets"
+      ],
+      "usage": "k9o analytics create <slug> --name <display name> --columns <json|@file|-> --residency per-subject|shared [--partition-by a,b,...]",
+      "sample": "k9o analytics create <slug> --name <display name> --columns <json|@file|-> --residency per-subject|shared",
+      "description": "Create a dataset. --columns is [{\"name\":\"id\",\"type\":\"string\"}, ...]; types: string int32 int64 float64 bool date timestamp json bytes decimal(p,s). A timestamp partition key needs a transform: created_at:day. Use per-subject for personal data, shared otherwise.",
+      "positionals": [
+        {
+          "name": "slug",
+          "optional": false
+        }
+      ],
+      "flags": [
+        {
+          "name": "name",
+          "value": "<display name>",
+          "optional": false
+        },
+        {
+          "name": "columns",
+          "value": "<json|@file|->",
+          "optional": false
+        },
+        {
+          "name": "residency",
+          "value": "per-subject|shared",
+          "optional": false
+        },
+        {
+          "name": "partition-by",
+          "value": "a,b,...",
+          "optional": true
+        }
+      ],
+      "sdkMethods": [
+        "k9o.analytics.create()"
+      ],
+      "restRoutes": []
+    },
+    {
+      "path": [
+        "analytics",
+        "delete"
+      ],
+      "aliases": [
+        "dataset",
+        "datasets"
+      ],
+      "usage": "k9o analytics delete <slug>",
+      "sample": "k9o analytics delete <slug>",
+      "description": "Retire a dataset (its slug is never reissued)",
+      "positionals": [
+        {
+          "name": "slug",
+          "optional": false
+        }
+      ],
+      "flags": [],
+      "sdkMethods": [
+        "k9o.analytics.delete()"
+      ],
+      "restRoutes": []
+    },
+    {
+      "path": [
+        "analytics",
+        "download-original"
+      ],
+      "aliases": [
+        "dataset",
+        "datasets"
+      ],
+      "usage": "k9o analytics download-original <slug> --out <file>",
+      "sample": "k9o analytics download-original <slug> --out <file>",
+      "description": "Save the original uploaded file",
+      "positionals": [
+        {
+          "name": "slug",
+          "optional": false
+        }
+      ],
+      "flags": [
+        {
+          "name": "out",
+          "value": "<file>",
+          "optional": false
+        }
+      ],
+      "sdkMethods": [
+        "k9o.analytics.downloadOriginal()"
+      ],
+      "restRoutes": []
+    },
+    {
+      "path": [
+        "analytics",
+        "get"
+      ],
+      "aliases": [
+        "dataset",
+        "datasets"
+      ],
+      "usage": "k9o analytics get <slug>",
+      "sample": "k9o analytics get <slug>",
+      "description": "Show one dataset",
+      "positionals": [
+        {
+          "name": "slug",
+          "optional": false
+        }
+      ],
+      "flags": [],
+      "sdkMethods": [
+        "k9o.analytics.get()"
+      ],
+      "restRoutes": []
+    },
+    {
+      "path": [
+        "analytics",
+        "list"
+      ],
+      "aliases": [
+        "dataset",
+        "datasets"
+      ],
+      "usage": "k9o analytics list",
+      "sample": "k9o analytics list",
+      "description": "List the project's datasets, newest first",
+      "positionals": [],
+      "flags": [],
+      "sdkMethods": [
+        "k9o.analytics.list()"
+      ],
+      "restRoutes": []
+    },
+    {
+      "path": [
+        "analytics",
+        "materialize"
+      ],
+      "aliases": [
+        "dataset",
+        "datasets"
+      ],
+      "usage": "k9o analytics materialize <slug> --from-collection <name> | --from-query <saved query id>",
+      "sample": "k9o analytics materialize <slug> --from-collection <name> --from-query <saved query id>",
+      "description": "Copy rows into the dataset from a collection or a saved query",
+      "positionals": [
+        {
+          "name": "slug",
+          "optional": false
+        }
+      ],
+      "flags": [
+        {
+          "name": "from-collection",
+          "value": "<name>",
+          "optional": false
+        },
+        {
+          "name": "from-query",
+          "value": "<saved query id>",
+          "optional": false
+        }
+      ],
+      "sdkMethods": [
+        "k9o.analytics.materialize()"
+      ],
+      "restRoutes": []
+    },
+    {
+      "path": [
+        "analytics",
+        "query"
+      ],
+      "aliases": [
+        "dataset",
+        "datasets"
+      ],
+      "usage": "k9o analytics query --sql <sql|@file|-> --datasets a,b,...",
+      "sample": "k9o analytics query --sql <sql|@file|-> --datasets a,b,...",
+      "description": "Run a read-only SELECT. Refer to each dataset as dataset.<slug>.",
+      "positionals": [],
+      "flags": [
+        {
+          "name": "sql",
+          "value": "<sql|@file|->",
+          "optional": false
+        },
+        {
+          "name": "datasets",
+          "value": "a,b,...",
+          "optional": false
+        }
+      ],
+      "sdkMethods": [
+        "k9o.analytics.query()"
+      ],
+      "restRoutes": []
+    },
+    {
+      "path": [
+        "analytics",
+        "read"
+      ],
+      "aliases": [
+        "dataset",
+        "datasets"
+      ],
+      "usage": "k9o analytics read <slug> [--partition-filter <json>] [--limit N] [--cursor c]",
+      "sample": "k9o analytics read <slug>",
+      "description": "Page through a dataset's rows; prints the cursor for the next page",
+      "positionals": [
+        {
+          "name": "slug",
+          "optional": false
+        }
+      ],
+      "flags": [
+        {
+          "name": "partition-filter",
+          "value": "<json>",
+          "optional": true
+        },
+        {
+          "name": "limit",
+          "value": "N",
+          "optional": true
+        },
+        {
+          "name": "cursor",
+          "value": "c",
+          "optional": true
+        }
+      ],
+      "sdkMethods": [
+        "k9o.analytics.read()"
+      ],
+      "restRoutes": []
+    },
+    {
+      "path": [
+        "analytics",
+        "rollups",
+        "create"
+      ],
+      "aliases": [
+        "dataset",
+        "datasets"
+      ],
+      "usage": "k9o analytics rollups create <dataset> --slug <s> --source <stream> --measures <json|@file> --window-seconds N (--subject-field <f> | --non-personal) [--dimensions a,b] [--reattest-days 7|30|90|365]",
+      "sample": "k9o analytics rollups create <dataset> --slug <s> --source <stream> --measures <json|@file> --window-seconds N --subject-field <f>",
+      "description": "",
+      "positionals": [
+        {
+          "name": "dataset",
+          "optional": false
+        }
+      ],
+      "flags": [
+        {
+          "name": "slug",
+          "value": "<s>",
+          "optional": false
+        },
+        {
+          "name": "source",
+          "value": "<stream>",
+          "optional": false
+        },
+        {
+          "name": "measures",
+          "value": "<json|@file>",
+          "optional": false
+        },
+        {
+          "name": "window-seconds",
+          "value": "N",
+          "optional": false
+        },
+        {
+          "name": "subject-field",
+          "value": "<f>",
+          "optional": false
+        },
+        {
+          "name": "non-personal",
+          "value": null,
+          "optional": true
+        },
+        {
+          "name": "dimensions",
+          "value": "a,b",
+          "optional": true
+        },
+        {
+          "name": "reattest-days",
+          "value": "7|30|90|365",
+          "optional": true
+        }
+      ],
+      "sdkMethods": [
+        "k9o.analytics.rollups.create()"
+      ],
+      "restRoutes": []
+    },
+    {
+      "path": [
+        "analytics",
+        "rollups",
+        "delete"
+      ],
+      "aliases": [
+        "dataset",
+        "datasets"
+      ],
+      "usage": "k9o analytics rollups delete <dataset> <rollup-id>",
+      "sample": "k9o analytics rollups delete <dataset> <rollup-id>",
+      "description": "",
+      "positionals": [
+        {
+          "name": "dataset",
+          "optional": false
+        },
+        {
+          "name": "rollup-id",
+          "optional": false
+        }
+      ],
+      "flags": [],
+      "sdkMethods": [
+        "k9o.analytics.rollups.delete()"
+      ],
+      "restRoutes": []
+    },
+    {
+      "path": [
+        "analytics",
+        "rollups",
+        "list"
+      ],
+      "aliases": [
+        "dataset",
+        "datasets"
+      ],
+      "usage": "k9o analytics rollups list <dataset>",
+      "sample": "k9o analytics rollups list <dataset>",
+      "description": "List the dataset's rollups",
+      "positionals": [
+        {
+          "name": "dataset",
+          "optional": false
+        }
+      ],
+      "flags": [],
+      "sdkMethods": [
+        "k9o.analytics.rollups.list()"
+      ],
+      "restRoutes": []
+    },
+    {
+      "path": [
+        "analytics",
+        "rollups",
+        "reattest"
+      ],
+      "aliases": [
+        "dataset",
+        "datasets"
+      ],
+      "usage": "k9o analytics rollups reattest <dataset> <rollup-id> [--reattest-days 7|30|90|365]",
+      "sample": "k9o analytics rollups reattest <dataset> <rollup-id>",
+      "description": "Confirm the rollup is still wanted. HUMAN ONLY: a service, workload or extension token is refused (K9O_RBAC_DENY, human_only).",
+      "positionals": [
+        {
+          "name": "dataset",
+          "optional": false
+        },
+        {
+          "name": "rollup-id",
+          "optional": false
+        }
+      ],
+      "flags": [
+        {
+          "name": "reattest-days",
+          "value": "7|30|90|365",
+          "optional": true
+        }
+      ],
+      "sdkMethods": [
+        "k9o.analytics.rollups.reattest()"
+      ],
+      "restRoutes": []
+    },
+    {
+      "path": [
+        "analytics",
+        "schedules",
+        "create"
+      ],
+      "aliases": [
+        "dataset",
+        "datasets"
+      ],
+      "usage": "k9o analytics schedules create <dataset> --from-collection <name> --interval-seconds N [--reattest-days D]",
+      "sample": "k9o analytics schedules create <dataset> --from-collection <name> --interval-seconds N",
+      "description": "",
+      "positionals": [
+        {
+          "name": "dataset",
+          "optional": false
+        }
+      ],
+      "flags": [
+        {
+          "name": "from-collection",
+          "value": "<name>",
+          "optional": false
+        },
+        {
+          "name": "interval-seconds",
+          "value": "N",
+          "optional": false
+        },
+        {
+          "name": "reattest-days",
+          "value": "D",
+          "optional": true
+        }
+      ],
+      "sdkMethods": [
+        "k9o.analytics.schedules.create()"
+      ],
+      "restRoutes": []
+    },
+    {
+      "path": [
+        "analytics",
+        "schedules",
+        "delete"
+      ],
+      "aliases": [
+        "dataset",
+        "datasets"
+      ],
+      "usage": "k9o analytics schedules delete <dataset> <schedule-id>",
+      "sample": "k9o analytics schedules delete <dataset> <schedule-id>",
+      "description": "",
+      "positionals": [
+        {
+          "name": "dataset",
+          "optional": false
+        },
+        {
+          "name": "schedule-id",
+          "optional": false
+        }
+      ],
+      "flags": [],
+      "sdkMethods": [
+        "k9o.analytics.schedules.delete()"
+      ],
+      "restRoutes": []
+    },
+    {
+      "path": [
+        "analytics",
+        "schedules",
+        "list"
+      ],
+      "aliases": [
+        "dataset",
+        "datasets"
+      ],
+      "usage": "k9o analytics schedules list <dataset>",
+      "sample": "k9o analytics schedules list <dataset>",
+      "description": "List the dataset's schedules with their last and next runs",
+      "positionals": [
+        {
+          "name": "dataset",
+          "optional": false
+        }
+      ],
+      "flags": [],
+      "sdkMethods": [
+        "k9o.analytics.schedules.list()"
+      ],
+      "restRoutes": []
+    },
+    {
+      "path": [
+        "analytics",
+        "schedules",
+        "reattest"
+      ],
+      "aliases": [
+        "dataset",
+        "datasets"
+      ],
+      "usage": "k9o analytics schedules reattest <dataset> <schedule-id> [--reattest-days 7|30|90|365]",
+      "sample": "k9o analytics schedules reattest <dataset> <schedule-id>",
+      "description": "Confirm the schedule is still wanted and resume it if paused. HUMAN ONLY: a service, workload or extension token is refused.",
+      "positionals": [
+        {
+          "name": "dataset",
+          "optional": false
+        },
+        {
+          "name": "schedule-id",
+          "optional": false
+        }
+      ],
+      "flags": [
+        {
+          "name": "reattest-days",
+          "value": "7|30|90|365",
+          "optional": true
+        }
+      ],
+      "sdkMethods": [
+        "k9o.analytics.schedules.reattest()"
+      ],
+      "restRoutes": []
+    },
+    {
+      "path": [
+        "analytics",
+        "upload"
+      ],
+      "aliases": [
+        "dataset",
+        "datasets"
+      ],
+      "usage": "k9o analytics upload <slug> <file> [--format csv|json] [--dry-run] [--on-error skip|reject] [--delimiter c] [--encoding e] [--no-header] [--manifest <json|@file>]",
+      "sample": "k9o analytics upload <slug> <file>",
+      "description": "Load a CSV or JSON file (up to 25 MiB). The format comes from the file extension when --format is absent. --dry-run shows the detected columns and a 50-row preview and writes nothing. --manifest creates the dataset in the same call when the slug does not exist yet.",
+      "positionals": [
+        {
+          "name": "slug",
+          "optional": false
+        },
+        {
+          "name": "file",
+          "optional": false
+        }
+      ],
+      "flags": [
+        {
+          "name": "format",
+          "value": "csv|json",
+          "optional": true
+        },
+        {
+          "name": "dry-run",
+          "value": null,
+          "optional": true
+        },
+        {
+          "name": "on-error",
+          "value": "skip|reject",
+          "optional": true
+        },
+        {
+          "name": "delimiter",
+          "value": "c",
+          "optional": true
+        },
+        {
+          "name": "encoding",
+          "value": "e",
+          "optional": true
+        },
+        {
+          "name": "no-header",
+          "value": null,
+          "optional": true
+        },
+        {
+          "name": "manifest",
+          "value": "<json|@file>",
+          "optional": true
+        }
+      ],
+      "sdkMethods": [
+        "k9o.analytics.upload()"
+      ],
+      "restRoutes": []
+    },
+    {
+      "path": [
+        "analytics",
+        "write"
+      ],
+      "aliases": [
+        "dataset",
+        "datasets"
+      ],
+      "usage": "k9o analytics write <slug> --rows <json> | --rows-file <path|-> [--on-error skip|reject]",
+      "sample": "k9o analytics write <slug> --rows <json> --rows-file <path|->",
+      "description": "Append rows: a JSON array, or newline-delimited JSON from a file",
+      "positionals": [
+        {
+          "name": "slug",
+          "optional": false
+        }
+      ],
+      "flags": [
+        {
+          "name": "rows",
+          "value": "<json>",
+          "optional": false
+        },
+        {
+          "name": "rows-file",
+          "value": "<path|->",
+          "optional": false
+        },
+        {
+          "name": "on-error",
+          "value": "skip|reject",
+          "optional": true
+        }
+      ],
+      "sdkMethods": [
+        "k9o.analytics.write()"
+      ],
+      "restRoutes": []
+    },
+    {
+      "path": [
+        "approval-policy",
+        "create"
+      ],
+      "aliases": [],
+      "usage": "k9o approval-policy create --collection <name> --operation insert|update|delete --action queue|auto_approve --predicate '<json>'",
+      "sample": "k9o approval-policy create --collection <name> --operation insert|update|delete --action queue|auto_approve --predicate '<json>'",
+      "description": "Create a policy. The predicate is a JSON object such as {\"gt\":[\"change.row.amount\",1000]}. Policies apply to writes sent with --require-approval (k9o data insert|update|delete).",
+      "positionals": [],
+      "flags": [
+        {
+          "name": "collection",
+          "value": "<name>",
+          "optional": false
+        },
+        {
+          "name": "operation",
+          "value": "insert|update|delete",
+          "optional": false
+        },
+        {
+          "name": "action",
+          "value": "queue|auto_approve",
+          "optional": false
+        },
+        {
+          "name": "predicate",
+          "value": "'<json>'",
+          "optional": false
+        }
+      ],
+      "sdkMethods": [
+        "k9o.approvalPolicies.create()"
+      ],
+      "restRoutes": []
+    },
+    {
+      "path": [
+        "approval-policy",
+        "delete"
+      ],
+      "aliases": [],
+      "usage": "k9o approval-policy delete <id>",
+      "sample": "k9o approval-policy delete <id>",
+      "description": "Delete a policy",
+      "positionals": [
+        {
+          "name": "id",
+          "optional": false
+        }
+      ],
+      "flags": [],
+      "sdkMethods": [
+        "k9o.approvalPolicies.delete()"
+      ],
+      "restRoutes": []
+    },
+    {
+      "path": [
+        "approval-policy",
+        "list"
+      ],
+      "aliases": [],
+      "usage": "k9o approval-policy list",
+      "sample": "k9o approval-policy list",
+      "description": "List the project's policies, oldest first (the first match decides)",
+      "positionals": [],
+      "flags": [],
+      "sdkMethods": [
+        "k9o.approvalPolicies.list()"
+      ],
+      "restRoutes": []
+    },
+    {
+      "path": [
+        "approvals",
+        "approve"
+      ],
+      "aliases": [],
+      "usage": "k9o approvals approve <id> [--reason <text>]",
+      "sample": "k9o approvals approve <id>",
+      "description": "Approve a change. When more approvers are needed the change stays pending_approval: your approval is recorded, it is not applied yet.",
+      "positionals": [
+        {
+          "name": "id",
+          "optional": false
+        },
+        {
+          "name": "text",
+          "optional": true
+        }
+      ],
+      "flags": [
+        {
+          "name": "reason",
+          "value": null,
+          "optional": true
+        }
+      ],
+      "sdkMethods": [
+        "k9o.approvals.approve()"
+      ],
+      "restRoutes": []
+    },
+    {
+      "path": [
+        "approvals",
+        "bulk"
+      ],
+      "aliases": [],
+      "usage": "k9o approvals bulk --action approve|reject --criteria '<json>' [--reason <text>]",
+      "sample": "k9o approvals bulk --action approve|reject --criteria '<json>'",
+      "description": "Decide every pending change that matches a predicate. The call succeeds even when rows fail: the failed rows are printed after the decided ids, so compare them with what you intended. --reason is required for reject.",
+      "positionals": [
+        {
+          "name": "text",
+          "optional": true
+        }
+      ],
+      "flags": [
+        {
+          "name": "action",
+          "value": "approve|reject",
+          "optional": false
+        },
+        {
+          "name": "criteria",
+          "value": "'<json>'",
+          "optional": false
+        },
+        {
+          "name": "reason",
+          "value": null,
+          "optional": true
+        }
+      ],
+      "sdkMethods": [
+        "k9o.approvals.bulk()"
+      ],
+      "restRoutes": []
+    },
+    {
+      "path": [
+        "approvals",
+        "comment"
+      ],
+      "aliases": [],
+      "usage": "k9o approvals comment <id> --body <text> --visibility everyone|approvers_only",
+      "sample": "k9o approvals comment <id> --body <text> --visibility everyone|approvers_only",
+      "description": "Post a comment on a change (1 to 4000 characters of plain text). --visibility is required and fixed once posted: everyone is read by everyone who can read the change, approvers_only by the people who can decide it. A comment is never a decision; there is no edit or delete. Needs a signed-in session.",
+      "positionals": [
+        {
+          "name": "id",
+          "optional": false
+        }
+      ],
+      "flags": [
+        {
+          "name": "body",
+          "value": "<text>",
+          "optional": false
+        },
+        {
+          "name": "visibility",
+          "value": "everyone|approvers_only",
+          "optional": false
+        }
+      ],
+      "sdkMethods": [
+        "k9o.approvals.comments.add()"
+      ],
+      "restRoutes": []
+    },
+    {
+      "path": [
+        "approvals",
+        "comments"
+      ],
+      "aliases": [],
+      "usage": "k9o approvals comments <id> [--limit <1-200>] [--cursor <c>]",
+      "sample": "k9o approvals comments <id>",
+      "description": "List the comments you may see on a change, oldest first (default 50). When more exist the output ends with \"More: --cursor <c>\".",
+      "positionals": [
+        {
+          "name": "id",
+          "optional": false
+        },
+        {
+          "name": "c",
+          "optional": true
+        }
+      ],
+      "flags": [
+        {
+          "name": "limit",
+          "value": "<1-200>",
+          "optional": true
+        },
+        {
+          "name": "cursor",
+          "value": null,
+          "optional": true
+        }
+      ],
+      "sdkMethods": [
+        "k9o.approvals.comments.list()"
+      ],
+      "restRoutes": []
+    },
+    {
+      "path": [
+        "approvals",
+        "get"
+      ],
+      "aliases": [],
+      "usage": "k9o approvals get <id>",
+      "sample": "k9o approvals get <id>",
+      "description": "Show one change",
+      "positionals": [
+        {
+          "name": "id",
+          "optional": false
+        }
+      ],
+      "flags": [],
+      "sdkMethods": [
+        "k9o.approvals.get()"
+      ],
+      "restRoutes": []
+    },
+    {
+      "path": [
+        "approvals",
+        "list"
+      ],
+      "aliases": [],
+      "usage": "k9o approvals list [--status <s>] [--limit <1-200>] [--cursor <c>]",
+      "sample": "k9o approvals list",
+      "description": "List pending changes, newest first, one page at a time (default 50). When more exist the output ends with \"More: --cursor <c>\": pass it to --cursor, with the same --status, for the next page. --status is pending_approval, approved, rejected, expired or redeemed. Admins and auditors see every change; other members see only their own.",
+      "positionals": [
+        {
+          "name": "c",
+          "optional": true
+        }
+      ],
+      "flags": [
+        {
+          "name": "status",
+          "value": "<s>",
+          "optional": true
+        },
+        {
+          "name": "limit",
+          "value": "<1-200>",
+          "optional": true
+        },
+        {
+          "name": "cursor",
+          "value": null,
+          "optional": true
+        }
+      ],
+      "sdkMethods": [
+        "k9o.approvals.list()"
+      ],
+      "restRoutes": []
+    },
+    {
+      "path": [
+        "approvals",
+        "reject"
+      ],
+      "aliases": [],
+      "usage": "k9o approvals reject <id> --reason <text>",
+      "sample": "k9o approvals reject <id> --reason <text>",
+      "description": "Reject a change (reason required)",
+      "positionals": [
+        {
+          "name": "id",
+          "optional": false
+        },
+        {
+          "name": "text",
+          "optional": false
+        }
+      ],
+      "flags": [
+        {
+          "name": "reason",
+          "value": null,
+          "optional": false
+        }
+      ],
+      "sdkMethods": [
+        "k9o.approvals.reject()"
+      ],
+      "restRoutes": []
+    },
+    {
+      "path": [
+        "audit",
+        "export"
+      ],
+      "aliases": [],
+      "usage": "k9o audit export <file> --out <out>",
+      "sample": "k9o audit export <file> --out <out>",
+      "description": "Write all matching events to an NDJSON file (same filters as query; pages through the results)",
+      "positionals": [
+        {
+          "name": "file",
+          "optional": false
+        }
+      ],
+      "flags": [
+        {
+          "name": "out",
+          "value": "<out>",
+          "optional": false
+        }
+      ],
+      "sdkMethods": [
+        "k9o.audit.query()"
+      ],
+      "restRoutes": []
+    },
+    {
+      "path": [
+        "audit",
+        "query"
+      ],
+      "aliases": [],
+      "usage": "k9o audit query",
+      "sample": "k9o audit query",
+      "description": "Query historical events --event-type <type> --actor <actorId> --after <ISO time> --before <ISO time> --limit <1-200> --cursor <cursor>",
+      "positionals": [],
+      "flags": [],
+      "sdkMethods": [
+        "k9o.audit.query()"
+      ],
+      "restRoutes": []
+    },
+    {
+      "path": [
+        "audit",
+        "recent"
+      ],
+      "aliases": [],
+      "usage": "k9o audit recent",
+      "sample": "k9o audit recent",
+      "description": "Events from the last N minutes, fetched once (--since-minutes, default 5; --limit). Run it again to see newer events.",
+      "positionals": [],
+      "flags": [],
+      "sdkMethods": [
+        "k9o.audit.query()"
+      ],
+      "restRoutes": []
+    },
+    {
+      "path": [
+        "audit",
+        "replay"
+      ],
+      "aliases": [],
+      "usage": "k9o audit replay [--after-audit-event-id <evt_...> | --from-sequence <N>] [--limit <1-10000>]",
+      "sample": "k9o audit replay",
+      "description": "Read one page of events in order, after a known event or from a position in the audit log (warden.checkpoint events included). Prints the page: events, nextCursor, hasMore. Page on with --after-audit-event-id set to the last event while hasMore is true. Needs the audit log's access.",
+      "positionals": [],
+      "flags": [
+        {
+          "name": "after-audit-event-id",
+          "value": "<evt_...>",
+          "optional": true
+        },
+        {
+          "name": "from-sequence",
+          "value": "<N>",
+          "optional": true
+        },
+        {
+          "name": "limit",
+          "value": "<1-10000>",
+          "optional": true
+        }
+      ],
+      "sdkMethods": [
+        "k9o.audit.replay()"
+      ],
+      "restRoutes": []
+    },
+    {
+      "path": [
+        "audit",
+        "tail"
+      ],
+      "aliases": [],
+      "usage": "k9o audit tail [--type <event type>] ... [--json]",
+      "sample": "k9o audit tail",
+      "description": "Follow the audit log live, one event per line, until interrupted (Ctrl-C). Repeat --type (or comma-separate) to keep only those event types. Each event has auditEventId, type, actorType, occurredAt and outcome, plus eventId (the stream frame's id); read the full row with query. Each event prints once. With --json (or --output json) each line is one JSON object. Needs the org-owner, org-admin, project-admin or project-auditor role; an extension cannot tail.",
+      "positionals": [],
+      "flags": [
+        {
+          "name": "type",
+          "value": "<event type>",
+          "optional": true
+        },
+        {
+          "name": "json",
+          "value": null,
+          "optional": true
+        }
+      ],
+      "sdkMethods": [
+        "k9o.audit.tail()"
+      ],
+      "restRoutes": []
+    },
+    {
+      "path": [
+        "byos-cred",
+        "create"
+      ],
+      "aliases": [],
+      "usage": "k9o byos-cred create <name> --name <name> --provider <provider> --region <region> --provider-region <provider-region> --private-key-pem <private-key-pem> --key-id <key-id> --api-token <api-token>",
+      "sample": "k9o byos-cred create <name> --name <name> --provider <provider> --region <region> --provider-region <provider-region> --private-key-pem <private-key-pem> --key-id <key-id> --api-token <api-token>",
+      "description": "Pre-create a credential secret, print its credentialRef",
+      "positionals": [
+        {
+          "name": "name",
+          "optional": false
+        }
+      ],
+      "flags": [
+        {
+          "name": "name",
+          "value": "<name>",
+          "optional": false
+        },
+        {
+          "name": "provider",
+          "value": "<provider>",
+          "optional": false
+        },
+        {
+          "name": "region",
+          "value": "<region>",
+          "optional": false
+        },
+        {
+          "name": "provider-region",
+          "value": "<provider-region>",
+          "optional": false
+        },
+        {
+          "name": "private-key-pem",
+          "value": "<private-key-pem>",
+          "optional": false
+        },
+        {
+          "name": "key-id",
+          "value": "<key-id>",
+          "optional": false
+        },
+        {
+          "name": "api-token",
+          "value": "<api-token>",
+          "optional": false
+        }
+      ],
+      "sdkMethods": [
+        "k9o.kibo.vault.secrets.create()"
+      ],
+      "restRoutes": []
+    },
+    {
+      "path": [
+        "completion"
+      ],
+      "aliases": [],
+      "usage": "k9o completion <shell> shell: bash | zsh | fish",
+      "sample": "k9o completion <shell> shell: bash zsh fish",
+      "description": "Emit a shell completion script (bash|zsh|fish)",
+      "positionals": [
+        {
+          "name": "shell",
+          "optional": false
+        }
+      ],
+      "flags": [],
+      "sdkMethods": [],
+      "restRoutes": []
+    },
+    {
+      "path": [
+        "config",
+        "get"
+      ],
+      "aliases": [],
+      "usage": "k9o config get <key>",
+      "sample": "k9o config get <key>",
+      "description": "Read a key",
+      "positionals": [
+        {
+          "name": "key",
+          "optional": false
+        }
+      ],
+      "flags": [],
+      "sdkMethods": [],
+      "restRoutes": []
+    },
+    {
+      "path": [
+        "config",
+        "list"
+      ],
+      "aliases": [],
+      "usage": "k9o config list",
+      "sample": "k9o config list",
+      "description": "List all keys for the active profile",
+      "positionals": [],
+      "flags": [],
+      "sdkMethods": [],
+      "restRoutes": []
+    },
+    {
+      "path": [
+        "config",
+        "set"
+      ],
+      "aliases": [],
+      "usage": "k9o config set <key> <value>",
+      "sample": "k9o config set <key> <value>",
+      "description": "Set a key on the active profile",
+      "positionals": [
+        {
+          "name": "key",
+          "optional": false
+        },
+        {
+          "name": "value",
+          "optional": false
+        }
+      ],
+      "flags": [],
+      "sdkMethods": [],
+      "restRoutes": []
+    },
+    {
+      "path": [
+        "config",
+        "unset"
+      ],
+      "aliases": [],
+      "usage": "k9o config unset <key>",
+      "sample": "k9o config unset <key>",
+      "description": "Clear a key",
+      "positionals": [
+        {
+          "name": "key",
+          "optional": false
+        }
+      ],
+      "flags": [],
+      "sdkMethods": [],
+      "restRoutes": []
+    },
+    {
+      "path": [
+        "crypto",
+        "decrypt"
+      ],
+      "aliases": [],
+      "usage": "k9o crypto decrypt --crypt <crypt>",
+      "sample": "k9o crypto decrypt --crypt <crypt>",
+      "description": "Decrypt a ciphertext; writes the plaintext",
+      "positionals": [],
+      "flags": [
+        {
+          "name": "crypt",
+          "value": "<crypt>",
+          "optional": false
+        }
+      ],
+      "sdkMethods": [
+        "k9o.crypto.decrypt()"
+      ],
+      "restRoutes": []
+    },
+    {
+      "path": [
+        "crypto",
+        "encrypt"
+      ],
+      "aliases": [],
+      "usage": "k9o crypto encrypt --crypt <crypt>",
+      "sample": "k9o crypto encrypt --crypt <crypt>",
+      "description": "Encrypt plaintext; prints the ciphertext as base64 text",
+      "positionals": [],
+      "flags": [
+        {
+          "name": "crypt",
+          "value": "<crypt>",
+          "optional": false
+        }
+      ],
+      "sdkMethods": [
+        "k9o.crypto.encrypt()"
+      ],
+      "restRoutes": []
+    },
+    {
+      "path": [
+        "crypto",
+        "federated-token"
+      ],
+      "aliases": [],
+      "usage": "k9o crypto federated-token --crypt <crypt>",
+      "sample": "k9o crypto federated-token --crypt <crypt>",
+      "description": "Write a short-lived identity token (at most 15 minutes) for your own cloud's token exchange (BYOK, HYOK); see FEDERATED TOKEN below",
+      "positionals": [],
+      "flags": [
+        {
+          "name": "crypt",
+          "value": "<crypt>",
+          "optional": false
+        }
+      ],
+      "sdkMethods": [
+        "k9o.crypto.federatedToken()"
+      ],
+      "restRoutes": []
+    },
+    {
+      "path": [
+        "crypto",
+        "mode"
+      ],
+      "aliases": [],
+      "usage": "k9o crypto mode",
+      "sample": "k9o crypto mode",
+      "description": "Print the project's custody mode and epoch. Give --crypt to ask about that crypt: a token or workload policy scoped to named crypts is refused without it",
+      "positionals": [],
+      "flags": [],
+      "sdkMethods": [
+        "k9o.crypto.mode()"
+      ],
+      "restRoutes": []
+    },
+    {
+      "path": [
+        "crypto",
+        "rewrap"
+      ],
+      "aliases": [],
+      "usage": "k9o crypto rewrap --crypt <crypt>",
+      "sample": "k9o crypto rewrap --crypt <crypt>",
+      "description": "Open a ciphertext and seal it again under the project's current key version, in one call; prints the new ciphertext",
+      "positionals": [],
+      "flags": [
+        {
+          "name": "crypt",
+          "value": "<crypt>",
+          "optional": false
+        }
+      ],
+      "sdkMethods": [
+        "k9o.crypto.rewrap()"
+      ],
+      "restRoutes": []
+    },
+    {
+      "path": [
+        "custody",
+        "status"
+      ],
+      "aliases": [],
+      "usage": "k9o custody status",
+      "sample": "k9o custody status",
+      "description": "Show the custody mode, whether an external key source is attached, its provider, the last custody job and, for an HSM, its vendor, cluster and region. Needs the project-admin or project-auditor role. Changing custody is a Console action.",
+      "positionals": [],
+      "flags": [],
+      "sdkMethods": [
+        "k9o.custody.status()"
+      ],
+      "restRoutes": []
+    },
+    {
+      "path": [
+        "data",
+        "delete"
+      ],
+      "aliases": [],
+      "usage": "k9o data delete <collection> <id> [--require-approval] --data <data>",
+      "sample": "k9o data delete <collection> <id> --data <data>",
+      "description": "Delete one record",
+      "positionals": [
+        {
+          "name": "collection",
+          "optional": false
+        },
+        {
+          "name": "id",
+          "optional": false
+        }
+      ],
+      "flags": [
+        {
+          "name": "require-approval",
+          "value": null,
+          "optional": true
+        },
+        {
+          "name": "data",
+          "value": "<data>",
+          "optional": false
+        }
+      ],
+      "sdkMethods": [
+        "k9o.from('<collection>').delete()"
+      ],
+      "restRoutes": []
+    },
+    {
+      "path": [
+        "data",
+        "insert"
+      ],
+      "aliases": [],
+      "usage": "k9o data insert <collection> --data <json|@file|-> [--require-approval]",
+      "sample": "k9o data insert <collection> --data <json|@file|->",
+      "description": "Insert one record ('-' reads the JSON from stdin)",
+      "positionals": [
+        {
+          "name": "collection",
+          "optional": false
+        }
+      ],
+      "flags": [
+        {
+          "name": "data",
+          "value": "<json|@file|->",
+          "optional": false
+        },
+        {
+          "name": "require-approval",
+          "value": null,
+          "optional": true
+        }
+      ],
+      "sdkMethods": [
+        "k9o.from('<collection>').insert()"
+      ],
+      "restRoutes": []
+    },
+    {
+      "path": [
+        "data",
+        "update"
+      ],
+      "aliases": [],
+      "usage": "k9o data update <collection> <id> --data <json|@file|-> [--require-approval]",
+      "sample": "k9o data update <collection> <id> --data <json|@file|->",
+      "description": "Change one record: --data is the patch",
+      "positionals": [
+        {
+          "name": "collection",
+          "optional": false
+        },
+        {
+          "name": "id",
+          "optional": false
+        }
+      ],
+      "flags": [
+        {
+          "name": "data",
+          "value": "<json|@file|->",
+          "optional": false
+        },
+        {
+          "name": "require-approval",
+          "value": null,
+          "optional": true
+        }
+      ],
+      "sdkMethods": [
+        "k9o.from('<collection>').update()"
+      ],
+      "restRoutes": []
+    },
+    {
+      "path": [
+        "doctor"
+      ],
+      "aliases": [],
+      "usage": "k9o doctor",
+      "sample": "k9o doctor",
+      "description": "Check your local dev environment for issues",
+      "positionals": [],
+      "flags": [],
+      "sdkMethods": [],
+      "restRoutes": []
+    },
+    {
+      "path": [
+        "end-user",
+        "get"
+      ],
+      "aliases": [],
+      "usage": "k9o end-user get <id>",
+      "sample": "k9o end-user get <id>",
+      "description": "Show one end user (project admin)",
+      "positionals": [
+        {
+          "name": "id",
+          "optional": false
+        }
+      ],
+      "flags": [],
+      "sdkMethods": [
+        "k9o.endUsers.get()"
+      ],
+      "restRoutes": []
+    },
+    {
+      "path": [
+        "end-user",
+        "list"
+      ],
+      "aliases": [],
+      "usage": "k9o end-user list [--status active|locked|deleted|all] [--q <email prefix>] [--limit <1-200>] [--cursor <c>]",
+      "sample": "k9o end-user list",
+      "description": "List end users, newest first (project admin). Default: active and locked. Pass the printed cursor to --cursor for the next page.",
+      "positionals": [],
+      "flags": [
+        {
+          "name": "status",
+          "value": "active|locked|deleted|all",
+          "optional": true
+        },
+        {
+          "name": "q",
+          "value": "<email prefix>",
+          "optional": true
+        },
+        {
+          "name": "limit",
+          "value": "<1-200>",
+          "optional": true
+        },
+        {
+          "name": "cursor",
+          "value": "<c>",
+          "optional": true
+        }
+      ],
+      "sdkMethods": [
+        "k9o.endUsers.list()"
+      ],
+      "restRoutes": []
+    },
+    {
+      "path": [
+        "end-user",
+        "role-grant",
+        "grant"
+      ],
+      "aliases": [],
+      "usage": "k9o end-user role-grant grant --end-user <id> --role <role>",
+      "sample": "k9o end-user role-grant grant --end-user <id> --role <role>",
+      "description": "Give an end user a role (project admin). The role is any string of 1 to 128 characters. Granting a role the user already holds is an error.",
+      "positionals": [],
+      "flags": [
+        {
+          "name": "end-user",
+          "value": "<id>",
+          "optional": false
+        },
+        {
+          "name": "role",
+          "value": "<role>",
+          "optional": false
+        }
+      ],
+      "sdkMethods": [
+        "k9o.endUsers.roleGrants.grant()"
+      ],
+      "restRoutes": []
+    },
+    {
+      "path": [
+        "end-user",
+        "role-grant",
+        "list"
+      ],
+      "aliases": [],
+      "usage": "k9o end-user role-grant list [--end-user <id>]",
+      "sample": "k9o end-user role-grant list",
+      "description": "List active role grants, oldest first. Not paginated.",
+      "positionals": [],
+      "flags": [
+        {
+          "name": "end-user",
+          "value": "<id>",
+          "optional": true
+        }
+      ],
+      "sdkMethods": [
+        "k9o.endUsers.roleGrants.list()"
+      ],
+      "restRoutes": []
+    },
+    {
+      "path": [
+        "end-user",
+        "role-grant",
+        "revoke"
+      ],
+      "aliases": [],
+      "usage": "k9o end-user role-grant revoke <grant-id>",
+      "sample": "k9o end-user role-grant revoke <grant-id>",
+      "description": "Revoke a grant (project admin). An unknown or already revoked id is not an error: it prints revoked: false.",
+      "positionals": [
+        {
+          "name": "grant-id",
+          "optional": false
+        }
+      ],
+      "flags": [],
+      "sdkMethods": [
+        "k9o.endUsers.roleGrants.revoke()"
+      ],
+      "restRoutes": []
+    },
+    {
+      "path": [
+        "ext-admin",
+        "config"
+      ],
+      "aliases": [
+        "extension-admin"
+      ],
+      "usage": "k9o ext-admin config <slug> [--set <json>]",
+      "sample": "k9o ext-admin config <slug>",
+      "description": "Show an extension's config, or merge a JSON object into it",
+      "positionals": [
+        {
+          "name": "slug",
+          "optional": false
+        }
+      ],
+      "flags": [
+        {
+          "name": "set",
+          "value": "<json>",
+          "optional": true
+        }
+      ],
+      "sdkMethods": [],
+      "restRoutes": [
+        "GET /@{projectSlug}/extensions-admin/{slug}",
+        "PATCH /@{projectSlug}/extensions-admin/{slug}/config"
+      ]
+    },
+    {
+      "path": [
+        "ext-admin",
+        "disable"
+      ],
+      "aliases": [
+        "extension-admin"
+      ],
+      "usage": "k9o ext-admin disable <slug>",
+      "sample": "k9o ext-admin disable <slug>",
+      "description": "Disable an installed extension",
+      "positionals": [
+        {
+          "name": "slug",
+          "optional": false
+        }
+      ],
+      "flags": [],
+      "sdkMethods": [],
+      "restRoutes": [
+        "DELETE /@{projectSlug}/extensions-admin/{slug}/disable"
+      ]
+    },
+    {
+      "path": [
+        "ext-admin",
+        "enable"
+      ],
+      "aliases": [
+        "extension-admin"
+      ],
+      "usage": "k9o ext-admin enable <slug>",
+      "sample": "k9o ext-admin enable <slug>",
+      "description": "Enable an installed extension",
+      "positionals": [
+        {
+          "name": "slug",
+          "optional": false
+        }
+      ],
+      "flags": [],
+      "sdkMethods": [],
+      "restRoutes": [
+        "POST /@{projectSlug}/extensions-admin/{slug}/enable"
+      ]
+    },
+    {
+      "path": [
+        "ext-admin",
+        "list"
+      ],
+      "aliases": [
+        "extension-admin"
+      ],
+      "usage": "k9o ext-admin list",
+      "sample": "k9o ext-admin list",
+      "description": "List extensions installed on the active project",
+      "positionals": [],
+      "flags": [],
+      "sdkMethods": [],
+      "restRoutes": [
+        "GET /@{projectSlug}/extensions-admin"
+      ]
+    },
+    {
+      "path": [
+        "function",
+        "delete"
+      ],
+      "aliases": [],
+      "usage": "k9o function delete <name>",
+      "sample": "k9o function delete <name>",
+      "description": "Retire a function",
+      "positionals": [
+        {
+          "name": "name",
+          "optional": false
+        }
+      ],
+      "flags": [],
+      "sdkMethods": [
+        "k9o.functions.delete()"
+      ],
+      "restRoutes": []
+    },
+    {
+      "path": [
+        "function",
+        "deploy"
+      ],
+      "aliases": [],
+      "usage": "k9o function deploy [<manifest.json>]",
+      "sample": "k9o function deploy",
+      "description": "Upload an artifact and deploy a function --name <name> --runtime <runtime> --tier sandbox --version <label> --artifact <file> (uploads the file) or --artifact-key <key> (already uploaded) [--description <text>] Flags override the same fields in the manifest.",
+      "positionals": [
+        {
+          "name": "manifest.json",
+          "optional": true
+        }
+      ],
+      "flags": [],
+      "sdkMethods": [
+        "k9o.functions.uploadArtifact()",
+        "k9o.functions.deploy()"
+      ],
+      "restRoutes": []
+    },
+    {
+      "path": [
+        "function",
+        "get"
+      ],
+      "aliases": [],
+      "usage": "k9o function get <name>",
+      "sample": "k9o function get <name>",
+      "description": "Get a function by name",
+      "positionals": [
+        {
+          "name": "name",
+          "optional": false
+        }
+      ],
+      "flags": [],
+      "sdkMethods": [
+        "k9o.functions.get()"
+      ],
+      "restRoutes": []
+    },
+    {
+      "path": [
+        "function",
+        "invoke"
+      ],
+      "aliases": [],
+      "usage": "k9o function invoke <name>",
+      "sample": "k9o function invoke <name>",
+      "description": "Invoke a function (--payload JSON or --payload-file)",
+      "positionals": [
+        {
+          "name": "name",
+          "optional": false
+        }
+      ],
+      "flags": [],
+      "sdkMethods": [
+        "k9o.functions.invoke()"
+      ],
+      "restRoutes": []
+    },
+    {
+      "path": [
+        "function",
+        "list"
+      ],
+      "aliases": [],
+      "usage": "k9o function list",
+      "sample": "k9o function list",
+      "description": "List deployed functions",
+      "positionals": [],
+      "flags": [],
+      "sdkMethods": [
+        "k9o.functions.list()"
+      ],
+      "restRoutes": []
+    },
+    {
+      "path": [
+        "function",
+        "trigger",
+        "create"
+      ],
+      "aliases": [],
+      "usage": "k9o function trigger create <function> --collection <name> --events <e1,e2,...> [--filter <json|@file|->] [--disabled] [--log-ok-invocations]",
+      "sample": "k9o function trigger create <function> --collection <name> --events <e1,e2,...>",
+      "description": "Create an event trigger. --events is 1 to 4 of insert, update, delete, upsert. Without --filter it fires on every matching event.",
+      "positionals": [
+        {
+          "name": "function",
+          "optional": false
+        }
+      ],
+      "flags": [
+        {
+          "name": "collection",
+          "value": "<name>",
+          "optional": false
+        },
+        {
+          "name": "events",
+          "value": "<e1,e2,...>",
+          "optional": false
+        },
+        {
+          "name": "filter",
+          "value": "<json|@file|->",
+          "optional": true
+        },
+        {
+          "name": "disabled",
+          "value": null,
+          "optional": true
+        },
+        {
+          "name": "log-ok-invocations",
+          "value": null,
+          "optional": true
+        }
+      ],
+      "sdkMethods": [
+        "k9o.functions.triggers.create()"
+      ],
+      "restRoutes": []
+    },
+    {
+      "path": [
+        "function",
+        "trigger",
+        "delete"
+      ],
+      "aliases": [],
+      "usage": "k9o function trigger delete <function> <trigger-id>",
+      "sample": "k9o function trigger delete <function> <trigger-id>",
+      "description": "Delete a trigger. Deleting twice is an error.",
+      "positionals": [
+        {
+          "name": "function",
+          "optional": false
+        },
+        {
+          "name": "trigger-id",
+          "optional": false
+        }
+      ],
+      "flags": [],
+      "sdkMethods": [
+        "k9o.functions.triggers.delete()"
+      ],
+      "restRoutes": []
+    },
+    {
+      "path": [
+        "function",
+        "trigger",
+        "list"
+      ],
+      "aliases": [],
+      "usage": "k9o function trigger list <function>",
+      "sample": "k9o function trigger list <function>",
+      "description": "List the function's triggers, newest first",
+      "positionals": [
+        {
+          "name": "function",
+          "optional": false
+        }
+      ],
+      "flags": [],
+      "sdkMethods": [
+        "k9o.functions.triggers.list()"
+      ],
+      "restRoutes": []
+    },
+    {
+      "path": [
+        "function",
+        "trigger",
+        "update"
+      ],
+      "aliases": [],
+      "usage": "k9o function trigger update <function> <trigger-id> [--events <list>] [--filter <json> | --clear-filter] [--enable | --disable] [--log-ok-invocations | --no-log-ok-invocations <no-log-ok-invocations>]",
+      "sample": "k9o function trigger update <function> <trigger-id>",
+      "description": "Change a trigger (at least one flag). The collection is fixed.",
+      "positionals": [
+        {
+          "name": "function",
+          "optional": false
+        },
+        {
+          "name": "trigger-id",
+          "optional": false
+        }
+      ],
+      "flags": [
+        {
+          "name": "events",
+          "value": "<list>",
+          "optional": true
+        },
+        {
+          "name": "filter",
+          "value": "<json>",
+          "optional": true
+        },
+        {
+          "name": "clear-filter",
+          "value": null,
+          "optional": true
+        },
+        {
+          "name": "enable",
+          "value": null,
+          "optional": true
+        },
+        {
+          "name": "disable",
+          "value": null,
+          "optional": true
+        },
+        {
+          "name": "log-ok-invocations",
+          "value": null,
+          "optional": true
+        },
+        {
+          "name": "no-log-ok-invocations",
+          "value": "<no-log-ok-invocations>",
+          "optional": true
+        }
+      ],
+      "sdkMethods": [
+        "k9o.functions.triggers.update()"
+      ],
+      "restRoutes": []
+    },
+    {
+      "path": [
+        "idp",
+        "create"
+      ],
+      "aliases": [],
+      "usage": "k9o idp create --provider <kind> --display-name <name> --client-id <id> (--client-secret-env <VAR> | --client-secret-file <path>) [--redirect-origin <origin> [,<origin>...]] [--metadata-url <url>] [--attribute-map <json>] [--enable]",
+      "sample": "k9o idp create --provider <kind> --display-name <name> --client-id <id> --client-secret-env <VAR>",
+      "description": "Register a provider (project admin). It is created disabled unless you pass --enable. --redirect-origin is an origin of your web app that may receive the sign-in result; separate several with commas.",
+      "positionals": [],
+      "flags": [
+        {
+          "name": "provider",
+          "value": "<kind>",
+          "optional": false
+        },
+        {
+          "name": "display-name",
+          "value": "<name>",
+          "optional": false
+        },
+        {
+          "name": "client-id",
+          "value": "<id>",
+          "optional": false
+        },
+        {
+          "name": "client-secret-env",
+          "value": "<VAR>",
+          "optional": false
+        },
+        {
+          "name": "client-secret-file",
+          "value": "<path>",
+          "optional": true
+        },
+        {
+          "name": "redirect-origin",
+          "value": "<origin>",
+          "optional": true
+        },
+        {
+          "name": "metadata-url",
+          "value": "<url>",
+          "optional": true
+        },
+        {
+          "name": "attribute-map",
+          "value": "<json>",
+          "optional": true
+        },
+        {
+          "name": "enable",
+          "value": null,
+          "optional": true
+        }
+      ],
+      "sdkMethods": [
+        "k9o.gate.identityProviders.create()"
+      ],
+      "restRoutes": []
+    },
+    {
+      "path": [
+        "idp",
+        "list"
+      ],
+      "aliases": [],
+      "usage": "k9o idp list",
+      "sample": "k9o idp list",
+      "description": "List the project's providers (secrets are never shown)",
+      "positionals": [],
+      "flags": [],
+      "sdkMethods": [
+        "k9o.gate.identityProviders.list()"
+      ],
+      "restRoutes": []
+    },
+    {
+      "path": [
+        "idp",
+        "test"
+      ],
+      "aliases": [],
+      "usage": "k9o idp test <id>",
+      "sample": "k9o idp test <id>",
+      "description": "Check that the provider's endpoints are reachable and a secret is stored",
+      "positionals": [
+        {
+          "name": "id",
+          "optional": false
+        }
+      ],
+      "flags": [],
+      "sdkMethods": [
+        "k9o.gate.identityProviders.testProvider()"
+      ],
+      "restRoutes": []
+    },
+    {
+      "path": [
+        "idp",
+        "update"
+      ],
+      "aliases": [],
+      "usage": "k9o idp update <id> [--display-name <name>] [--client-id <id>] [--client-secret-env <VAR> | --client-secret-file <path>] [--redirect-origin <origin> [,<origin>...]] [--metadata-url <url>] [--attribute-map <json>] [--enable | --disable]",
+      "sample": "k9o idp update <id>",
+      "description": "Change a provider (project admin). --redirect-origin replaces the whole list.",
+      "positionals": [
+        {
+          "name": "id",
+          "optional": false
+        }
+      ],
+      "flags": [
+        {
+          "name": "display-name",
+          "value": "<name>",
+          "optional": true
+        },
+        {
+          "name": "client-id",
+          "value": "<id>",
+          "optional": true
+        },
+        {
+          "name": "client-secret-env",
+          "value": "<VAR>",
+          "optional": true
+        },
+        {
+          "name": "client-secret-file",
+          "value": "<path>",
+          "optional": true
+        },
+        {
+          "name": "redirect-origin",
+          "value": "<origin>",
+          "optional": true
+        },
+        {
+          "name": "metadata-url",
+          "value": "<url>",
+          "optional": true
+        },
+        {
+          "name": "attribute-map",
+          "value": "<json>",
+          "optional": true
+        },
+        {
+          "name": "enable",
+          "value": null,
+          "optional": true
+        },
+        {
+          "name": "disable",
+          "value": null,
+          "optional": true
+        }
+      ],
+      "sdkMethods": [
+        "k9o.gate.identityProviders.update()"
+      ],
+      "restRoutes": []
+    },
+    {
+      "path": [
+        "init"
+      ],
+      "aliases": [],
+      "usage": "k9o init [--org <slug>] [--base-url <url>] [--project <slug>]",
+      "sample": "k9o init",
+      "description": "Interactive setup — sign in + pick an active project",
+      "positionals": [],
+      "flags": [
+        {
+          "name": "org",
+          "value": "<slug>",
+          "optional": true
+        },
+        {
+          "name": "base-url",
+          "value": "<url>",
+          "optional": true
+        },
+        {
+          "name": "project",
+          "value": "<slug>",
+          "optional": true
+        }
+      ],
+      "sdkMethods": [
+        "k9o.projects.list()",
+        "k9o.projects.create()"
+      ],
+      "restRoutes": []
+    },
+    {
+      "path": [
+        "keys",
+        "get"
+      ],
+      "aliases": [],
+      "usage": "k9o keys get <key-id>",
+      "sample": "k9o keys get <key-id>",
+      "description": "Show one key (vkey_...)",
+      "positionals": [
+        {
+          "name": "key-id",
+          "optional": false
+        }
+      ],
+      "flags": [],
+      "sdkMethods": [
+        "k9o.keys.get()"
+      ],
+      "restRoutes": []
+    },
+    {
+      "path": [
+        "keys",
+        "list"
+      ],
+      "aliases": [],
+      "usage": "k9o keys list [--all]",
+      "sample": "k9o keys list",
+      "description": "List the keys (not paged). By default only the active key; --all adds the rotating and revoked versions. Needs the project-admin or project-auditor role and a person's sign-in.",
+      "positionals": [],
+      "flags": [
+        {
+          "name": "all",
+          "value": null,
+          "optional": true
+        }
+      ],
+      "sdkMethods": [
+        "k9o.keys.list()"
+      ],
+      "restRoutes": []
+    },
+    {
+      "path": [
+        "keys",
+        "rotate"
+      ],
+      "aliases": [],
+      "usage": "k9o keys rotate <key-id> [--step-up-proof-cmd '<command>']",
+      "sample": "k9o keys rotate <key-id>",
+      "description": "Rotate the active key: a new version is created, every data key is re-wrapped under it and the old version is revoked. Writes to the project's encrypted data wait while it runs. Needs project-admin, a person's sign-in and a fresh MFA step-up. Without --step-up-proof-cmd, a required step-up is printed (the challenge too) and the command exits non-zero; complete the step-up, then run it again. With --step-up-proof-cmd your command answers the challenge: it gets the challenge as JSON on stdin and the HTTP method and URL in K9O_STEPUP_METHOD and K9O_STEPUP_URL, and prints {\"method\":\"dpop|mtls|webauthn\",\"proof\":\"...\"} on stdout. The request is then sent once more with the proof; nothing else is retried. At most 3 rotations in 24 hours.",
+      "positionals": [
+        {
+          "name": "key-id",
+          "optional": false
+        }
+      ],
+      "flags": [
+        {
+          "name": "step-up-proof-cmd",
+          "value": "'<command>'",
+          "optional": true
+        }
+      ],
+      "sdkMethods": [
+        "k9o.keys.rotate()"
+      ],
+      "restRoutes": []
+    },
+    {
+      "path": [
+        "ledger",
+        "verify"
+      ],
+      "aliases": [],
+      "usage": "k9o ledger verify (--file <ledger> | --stdin) [--key-set <keyset> --signature <sig>] [--format json|ndjson]",
+      "sample": "k9o ledger verify --file <ledger>",
+      "description": "",
+      "positionals": [],
+      "flags": [
+        {
+          "name": "file",
+          "value": "<ledger>",
+          "optional": false
+        },
+        {
+          "name": "stdin",
+          "value": null,
+          "optional": true
+        },
+        {
+          "name": "key-set",
+          "value": "<keyset>",
+          "optional": true
+        },
+        {
+          "name": "signature",
+          "value": "<sig>",
+          "optional": true
+        },
+        {
+          "name": "format",
+          "value": "json|ndjson",
+          "optional": true
+        }
+      ],
+      "sdkMethods": [],
+      "restRoutes": []
+    },
+    {
+      "path": [
+        "login"
+      ],
+      "aliases": [],
+      "usage": "k9o login [--org <slug>] [--base-url <url>] [--email <email>] [--mfa-code <code>] [--project <slug>]",
+      "sample": "k9o login",
+      "description": "Sign in as an operator (email + password, then an MFA code if",
+      "positionals": [],
+      "flags": [
+        {
+          "name": "org",
+          "value": "<slug>",
+          "optional": true
+        },
+        {
+          "name": "base-url",
+          "value": "<url>",
+          "optional": true
+        },
+        {
+          "name": "email",
+          "value": "<email>",
+          "optional": true
+        },
+        {
+          "name": "mfa-code",
+          "value": "<code>",
+          "optional": true
+        },
+        {
+          "name": "project",
+          "value": "<slug>",
+          "optional": true
+        }
+      ],
+      "sdkMethods": [],
+      "restRoutes": []
+    },
+    {
+      "path": [
+        "logout"
+      ],
+      "aliases": [],
+      "usage": "k9o logout [--profile <name>]",
+      "sample": "k9o logout",
+      "description": "Clear local credentials",
+      "positionals": [],
+      "flags": [
+        {
+          "name": "profile",
+          "value": "<name>",
+          "optional": true
+        }
+      ],
+      "sdkMethods": [],
+      "restRoutes": []
+    },
+    {
+      "path": [
+        "me",
+        "api-tokens",
+        "create"
+      ],
+      "aliases": [],
+      "usage": "k9o me api-tokens create <label> --tier readonly|readwrite|admin [--projects <slug,...>] [--resource-classes <a,b>] [--cidrs <cidr,...>] [--ttl-days <n>]",
+      "sample": "k9o me api-tokens create <label> --tier readonly|readwrite|admin",
+      "description": "",
+      "positionals": [
+        {
+          "name": "label",
+          "optional": false
+        }
+      ],
+      "flags": [
+        {
+          "name": "tier",
+          "value": "readonly|readwrite|admin",
+          "optional": false
+        },
+        {
+          "name": "projects",
+          "value": "<slug,...>",
+          "optional": true
+        },
+        {
+          "name": "resource-classes",
+          "value": "<a,b>",
+          "optional": true
+        },
+        {
+          "name": "cidrs",
+          "value": "<cidr,...>",
+          "optional": true
+        },
+        {
+          "name": "ttl-days",
+          "value": "<n>",
+          "optional": true
+        }
+      ],
+      "sdkMethods": [
+        "k9o.me.apiTokens.create()"
+      ],
+      "restRoutes": []
+    },
+    {
+      "path": [
+        "me",
+        "api-tokens",
+        "delete"
+      ],
+      "aliases": [],
+      "usage": "k9o me api-tokens delete",
+      "sample": "k9o me api-tokens delete",
+      "description": "",
+      "positionals": [],
+      "flags": [],
+      "sdkMethods": [
+        "k9o.me.apiTokens.delete()"
+      ],
+      "restRoutes": []
+    },
+    {
+      "path": [
+        "me",
+        "api-tokens",
+        "list"
+      ],
+      "aliases": [],
+      "usage": "k9o me api-tokens list",
+      "sample": "k9o me api-tokens list",
+      "description": "",
+      "positionals": [],
+      "flags": [],
+      "sdkMethods": [
+        "k9o.me.apiTokens.list()"
+      ],
+      "restRoutes": []
+    },
+    {
+      "path": [
+        "me",
+        "profile",
+        "get"
+      ],
+      "aliases": [],
+      "usage": "k9o me profile get",
+      "sample": "k9o me profile get",
+      "description": "update: --display-name <name>",
+      "positionals": [],
+      "flags": [],
+      "sdkMethods": [
+        "k9o.me.profile.get()"
+      ],
+      "restRoutes": []
+    },
+    {
+      "path": [
+        "me",
+        "profile",
+        "update"
+      ],
+      "aliases": [],
+      "usage": "k9o me profile update --display-name <name>",
+      "sample": "k9o me profile update --display-name <name>",
+      "description": "update: --display-name <name>",
+      "positionals": [],
+      "flags": [
+        {
+          "name": "display-name",
+          "value": "<name>",
+          "optional": false
+        }
+      ],
+      "sdkMethods": [
+        "k9o.me.profile.update()"
+      ],
+      "restRoutes": []
+    },
+    {
+      "path": [
+        "me",
+        "sessions",
+        "list"
+      ],
+      "aliases": [],
+      "usage": "k9o me sessions list",
+      "sample": "k9o me sessions list",
+      "description": "revoke-all keeps this device signed in",
+      "positionals": [],
+      "flags": [],
+      "sdkMethods": [
+        "k9o.me.sessions.list()"
+      ],
+      "restRoutes": []
+    },
+    {
+      "path": [
+        "me",
+        "sessions",
+        "revoke"
+      ],
+      "aliases": [],
+      "usage": "k9o me sessions revoke",
+      "sample": "k9o me sessions revoke",
+      "description": "revoke-all keeps this device signed in",
+      "positionals": [],
+      "flags": [],
+      "sdkMethods": [
+        "k9o.me.sessions.revoke()"
+      ],
+      "restRoutes": []
+    },
+    {
+      "path": [
+        "me",
+        "sessions",
+        "revoke-all"
+      ],
+      "aliases": [],
+      "usage": "k9o me sessions revoke-all",
+      "sample": "k9o me sessions revoke-all",
+      "description": "revoke-all keeps this device signed in",
+      "positionals": [],
+      "flags": [],
+      "sdkMethods": [
+        "k9o.me.sessions.revokeAll()"
+      ],
+      "restRoutes": []
+    },
+    {
+      "path": [
+        "metadata",
+        "filter"
+      ],
+      "aliases": [],
+      "usage": "k9o metadata filter --surface <s1[,s2,...]> [--where '<json array>'] [--limit <1-1000>] [--cursor <c>]",
+      "sample": "k9o metadata filter --surface <s1[,s2,...]>",
+      "description": "Rows whose declared columns meet --where, a JSON array of { field, op, value }. ops: eq neq gt gte lt lte contains startsWith endsWith in notIn. --cursor needs exactly one surface; when more rows exist the output ends with \"More: --cursor <c>\".",
+      "positionals": [
+        {
+          "name": "c",
+          "optional": true
+        }
+      ],
+      "flags": [
+        {
+          "name": "surface",
+          "value": "<s1[,s2,...]>",
+          "optional": false
+        },
+        {
+          "name": "where",
+          "value": "'<json array>'",
+          "optional": true
+        },
+        {
+          "name": "limit",
+          "value": "<1-1000>",
+          "optional": true
+        },
+        {
+          "name": "cursor",
+          "value": null,
+          "optional": true
+        }
+      ],
+      "sdkMethods": [
+        "k9o.metadata.filter()"
+      ],
+      "restRoutes": []
+    },
+    {
+      "path": [
+        "metadata",
+        "index",
+        "declare"
+      ],
+      "aliases": [],
+      "usage": "k9o metadata index declare <collection> --columns '<json array>'",
+      "sample": "k9o metadata index declare <collection> --columns '<json array>'",
+      "description": "Declare columns, replacing the previous declaration. --columns is a JSON array of { column, indexed? } (at most 64; [] clears it). The columns must already exist. Needs the project admin role.",
+      "positionals": [
+        {
+          "name": "collection",
+          "optional": false
+        }
+      ],
+      "flags": [
+        {
+          "name": "columns",
+          "value": "'<json array>'",
+          "optional": false
+        }
+      ],
+      "sdkMethods": [
+        "k9o.metadata.index.declare()"
+      ],
+      "restRoutes": []
+    },
+    {
+      "path": [
+        "metadata",
+        "index",
+        "get"
+      ],
+      "aliases": [],
+      "usage": "k9o metadata index get <collection>",
+      "sample": "k9o metadata index get <collection>",
+      "description": "The columns declared on a collection.",
+      "positionals": [
+        {
+          "name": "collection",
+          "optional": false
+        }
+      ],
+      "flags": [],
+      "sdkMethods": [
+        "k9o.metadata.index.get()"
+      ],
+      "restRoutes": []
+    },
+    {
+      "path": [
+        "metadata",
+        "nearest"
+      ],
+      "aliases": [],
+      "usage": "k9o metadata nearest --surface <collection:name> --column <column> --embedding '<json array>' | --embedding-file <path|-> [--k <1-1000>] [--metric cosine|euclidean|dot] [--where '<json array>']",
+      "sample": "k9o metadata nearest --surface <collection:name> --column <column> --embedding '<json array>' --embedding-file <path|->",
+      "description": "The rows nearest to the embedding, closest first (no score).",
+      "positionals": [],
+      "flags": [
+        {
+          "name": "surface",
+          "value": "<collection:name>",
+          "optional": false
+        },
+        {
+          "name": "column",
+          "value": "<column>",
+          "optional": false
+        },
+        {
+          "name": "embedding",
+          "value": "'<json array>'",
+          "optional": false
+        },
+        {
+          "name": "embedding-file",
+          "value": "<path|->",
+          "optional": false
+        },
+        {
+          "name": "k",
+          "value": "<1-1000>",
+          "optional": true
+        },
+        {
+          "name": "metric",
+          "value": null,
+          "optional": true
+        },
+        {
+          "name": "where",
+          "value": "'<json array>'",
+          "optional": true
+        }
+      ],
+      "sdkMethods": [
+        "k9o.metadata.vectors.nearest()"
+      ],
+      "restRoutes": []
+    },
+    {
+      "path": [
+        "metadata",
+        "search"
+      ],
+      "aliases": [],
+      "usage": "k9o metadata search --surface <collection:name> --field <column> --q <text> [--limit <1-1000>]",
+      "sample": "k9o metadata search --surface <collection:name> --field <column> --q <text>",
+      "description": "Full-text search of a declared text column (word stems; first page only).",
+      "positionals": [],
+      "flags": [
+        {
+          "name": "surface",
+          "value": "<collection:name>",
+          "optional": false
+        },
+        {
+          "name": "field",
+          "value": "<column>",
+          "optional": false
+        },
+        {
+          "name": "q",
+          "value": "<text>",
+          "optional": false
+        },
+        {
+          "name": "limit",
+          "value": "<1-1000>",
+          "optional": true
+        }
+      ],
+      "sdkMethods": [
+        "k9o.metadata.search()"
+      ],
+      "restRoutes": []
+    },
+    {
+      "path": [
+        "metadata",
+        "set"
+      ],
+      "aliases": [],
+      "usage": "k9o metadata set <collection> <id> --set '<json object>'",
+      "sample": "k9o metadata set <collection> <id> --set '<json object>'",
+      "description": "Write declared columns of one record. --set takes JSON inline, @file, or - for stdin. Prints the updated record.",
+      "positionals": [
+        {
+          "name": "collection",
+          "optional": false
+        },
+        {
+          "name": "id",
+          "optional": false
+        }
+      ],
+      "flags": [
+        {
+          "name": "set",
+          "value": "'<json object>'",
+          "optional": false
+        }
+      ],
+      "sdkMethods": [
+        "k9o.metadata.set()"
+      ],
+      "restRoutes": []
+    },
+    {
+      "path": [
+        "migration",
+        "apply"
+      ],
+      "aliases": [],
+      "usage": "k9o migration apply <file>",
+      "sample": "k9o migration apply <file>",
+      "description": "Apply migrations from a JSON file ({ \"migrations\": [{ \"version\", \"slug\", \"up\", \"down\" }] })",
+      "positionals": [
+        {
+          "name": "file",
+          "optional": false
+        }
+      ],
+      "flags": [],
+      "sdkMethods": [
+        "k9o.migrations.apply()"
+      ],
+      "restRoutes": []
+    },
+    {
+      "path": [
+        "migration",
+        "apply-pending"
+      ],
+      "aliases": [],
+      "usage": "k9o migration apply-pending <pendingId>",
+      "sample": "k9o migration apply-pending <pendingId>",
+      "description": "Apply a queued migration by id (PROJECT_ADMIN; a migration awaiting protected-collection approval is refused here, not this command's fast path)",
+      "positionals": [
+        {
+          "name": "pendingId",
+          "optional": false
+        }
+      ],
+      "flags": [],
+      "sdkMethods": [
+        "k9o.migrations.applyPending()"
+      ],
+      "restRoutes": []
+    },
+    {
+      "path": [
+        "migration",
+        "list"
+      ],
+      "aliases": [],
+      "usage": "k9o migration list",
+      "sample": "k9o migration list",
+      "description": "List applied migrations on the active project",
+      "positionals": [],
+      "flags": [],
+      "sdkMethods": [
+        "k9o.migrations.list()"
+      ],
+      "restRoutes": []
+    },
+    {
+      "path": [
+        "migration",
+        "pending"
+      ],
+      "aliases": [],
+      "usage": "k9o migration pending",
+      "sample": "k9o migration pending",
+      "description": "List queued migrations awaiting apply",
+      "positionals": [],
+      "flags": [],
+      "sdkMethods": [
+        "k9o.migrations.listPending()"
+      ],
+      "restRoutes": []
+    },
+    {
+      "path": [
+        "org",
+        "audit",
+        "query"
+      ],
+      "aliases": [],
+      "usage": "k9o org audit query",
+      "sample": "k9o org audit query",
+      "description": "Org-plane audit, newest first (--type <event type>, --limit <n>)",
+      "positionals": [],
+      "flags": [],
+      "sdkMethods": [
+        "k9o.org.auditLog.query()"
+      ],
+      "restRoutes": []
+    },
+    {
+      "path": [
+        "org",
+        "get"
+      ],
+      "aliases": [],
+      "usage": "k9o org get",
+      "sample": "k9o org get",
+      "description": "Read the bound org",
+      "positionals": [],
+      "flags": [],
+      "sdkMethods": [
+        "k9o.org.get()"
+      ],
+      "restRoutes": []
+    },
+    {
+      "path": [
+        "org",
+        "groups",
+        "get"
+      ],
+      "aliases": [],
+      "usage": "k9o org groups get",
+      "sample": "k9o org groups get",
+      "description": "Identity-provider groups (read-only)",
+      "positionals": [],
+      "flags": [],
+      "sdkMethods": [
+        "k9o.org.groups.get()"
+      ],
+      "restRoutes": []
+    },
+    {
+      "path": [
+        "org",
+        "groups",
+        "list"
+      ],
+      "aliases": [],
+      "usage": "k9o org groups list",
+      "sample": "k9o org groups list",
+      "description": "Identity-provider groups (read-only)",
+      "positionals": [],
+      "flags": [],
+      "sdkMethods": [
+        "k9o.org.groups.list()"
+      ],
+      "restRoutes": []
+    },
+    {
+      "path": [
+        "org",
+        "idp",
+        "configure"
+      ],
+      "aliases": [],
+      "usage": "k9o org idp configure",
+      "sample": "k9o org idp configure",
+      "description": "Org operator identity providers",
+      "positionals": [],
+      "flags": [],
+      "sdkMethods": [
+        "k9o.org.gate.idpProviders.configure()"
+      ],
+      "restRoutes": []
+    },
+    {
+      "path": [
+        "org",
+        "idp",
+        "create"
+      ],
+      "aliases": [],
+      "usage": "k9o org idp create --provider <kind> --display-name <display-name> --client-id <client-id> --client-secret-ref <client-secret-ref> [--redirect-uri <redirect-uri>] [--metadata-url <metadata-url>] [--attribute-map <json>] [--disabled]",
+      "sample": "k9o org idp create --provider <kind> --display-name <display-name> --client-id <client-id> --client-secret-ref <client-secret-ref>",
+      "description": "Org operator identity providers",
+      "positionals": [],
+      "flags": [
+        {
+          "name": "provider",
+          "value": "<kind>",
+          "optional": false
+        },
+        {
+          "name": "display-name",
+          "value": "<display-name>",
+          "optional": false
+        },
+        {
+          "name": "client-id",
+          "value": "<client-id>",
+          "optional": false
+        },
+        {
+          "name": "client-secret-ref",
+          "value": "<client-secret-ref>",
+          "optional": false
+        },
+        {
+          "name": "redirect-uri",
+          "value": "<redirect-uri>",
+          "optional": true
+        },
+        {
+          "name": "metadata-url",
+          "value": "<metadata-url>",
+          "optional": true
+        },
+        {
+          "name": "attribute-map",
+          "value": "<json>",
+          "optional": true
+        },
+        {
+          "name": "disabled",
+          "value": null,
+          "optional": true
+        }
+      ],
+      "sdkMethods": [
+        "k9o.org.gate.idpProviders.create()"
+      ],
+      "restRoutes": []
+    },
+    {
+      "path": [
+        "org",
+        "idp",
+        "delete"
+      ],
+      "aliases": [],
+      "usage": "k9o org idp delete",
+      "sample": "k9o org idp delete",
+      "description": "Org operator identity providers",
+      "positionals": [],
+      "flags": [],
+      "sdkMethods": [
+        "k9o.org.gate.idpProviders.delete()"
+      ],
+      "restRoutes": []
+    },
+    {
+      "path": [
+        "org",
+        "idp",
+        "list"
+      ],
+      "aliases": [],
+      "usage": "k9o org idp list",
+      "sample": "k9o org idp list",
+      "description": "Org operator identity providers",
+      "positionals": [],
+      "flags": [],
+      "sdkMethods": [
+        "k9o.org.gate.idpProviders.list()"
+      ],
+      "restRoutes": []
+    },
+    {
+      "path": [
+        "org",
+        "members",
+        "invite"
+      ],
+      "aliases": [],
+      "usage": "k9o org members invite --email <email> [--role ORG_MEMBER|ORG_ADMIN|ORG_BILLING_ADMIN|ORG_OWNER]",
+      "sample": "k9o org members invite --email <email>",
+      "description": "list: --status active|suspended, --state invited|active|suspended, --role <role>",
+      "positionals": [],
+      "flags": [
+        {
+          "name": "email",
+          "value": "<email>",
+          "optional": false
+        },
+        {
+          "name": "role",
+          "value": "ORG_MEMBER|ORG_ADMIN|ORG_BILLING_ADMIN|ORG_OWNER",
+          "optional": true
+        }
+      ],
+      "sdkMethods": [
+        "k9o.org.members.invite()"
+      ],
+      "restRoutes": []
+    },
+    {
+      "path": [
+        "org",
+        "members",
+        "list"
+      ],
+      "aliases": [],
+      "usage": "k9o org members list --status active|suspended, --state invited|active|suspended, --role <role>",
+      "sample": "k9o org members list --status active|suspended, --state invited|active|suspended, --role <role>",
+      "description": "list: --status active|suspended, --state invited|active|suspended, --role <role>",
+      "positionals": [],
+      "flags": [
+        {
+          "name": "status",
+          "value": "active|suspended,",
+          "optional": false
+        },
+        {
+          "name": "state",
+          "value": "invited|active|suspended,",
+          "optional": false
+        },
+        {
+          "name": "role",
+          "value": "<role>",
+          "optional": false
+        }
+      ],
+      "sdkMethods": [
+        "k9o.org.members.list()"
+      ],
+      "restRoutes": []
+    },
+    {
+      "path": [
+        "org",
+        "members",
+        "remove"
+      ],
+      "aliases": [],
+      "usage": "k9o org members remove",
+      "sample": "k9o org members remove",
+      "description": "list: --status active|suspended, --state invited|active|suspended, --role <role>",
+      "positionals": [],
+      "flags": [],
+      "sdkMethods": [
+        "k9o.org.members.remove()"
+      ],
+      "restRoutes": []
+    },
+    {
+      "path": [
+        "org",
+        "roles",
+        "grant"
+      ],
+      "aliases": [],
+      "usage": "k9o org roles grant <userId> --role ORG_ADMIN|ORG_BILLING_ADMIN|ORG_AUDITOR|ORG_MEMBER|ORG_OWNER [--reason <text>]",
+      "sample": "k9o org roles grant <userId> --role ORG_ADMIN|ORG_BILLING_ADMIN|ORG_AUDITOR|ORG_MEMBER|ORG_OWNER",
+      "description": "Org-level role grants",
+      "positionals": [
+        {
+          "name": "userId",
+          "optional": false
+        }
+      ],
+      "flags": [
+        {
+          "name": "role",
+          "value": "ORG_ADMIN|ORG_BILLING_ADMIN|ORG_AUDITOR|ORG_MEMBER|ORG_OWNER",
+          "optional": false
+        },
+        {
+          "name": "reason",
+          "value": "<text>",
+          "optional": true
+        }
+      ],
+      "sdkMethods": [
+        "k9o.org.gate.roles.grant()"
+      ],
+      "restRoutes": []
+    },
+    {
+      "path": [
+        "org",
+        "roles",
+        "list"
+      ],
+      "aliases": [],
+      "usage": "k9o org roles list",
+      "sample": "k9o org roles list",
+      "description": "Org-level role grants",
+      "positionals": [],
+      "flags": [],
+      "sdkMethods": [
+        "k9o.org.gate.roles.list()"
+      ],
+      "restRoutes": []
+    },
+    {
+      "path": [
+        "org",
+        "roles",
+        "revoke"
+      ],
+      "aliases": [],
+      "usage": "k9o org roles revoke",
+      "sample": "k9o org roles revoke",
+      "description": "Org-level role grants",
+      "positionals": [],
+      "flags": [],
+      "sdkMethods": [
+        "k9o.org.gate.roles.revoke()"
+      ],
+      "restRoutes": []
+    },
+    {
+      "path": [
+        "org",
+        "smtp",
+        "set"
+      ],
+      "aliases": [],
+      "usage": "k9o org smtp set --host <host> --port <port> --username <username> --password-ref <password-ref> --from-address <from-address> [--from-name <from-name>]",
+      "sample": "k9o org smtp set --host <host> --port <port> --username <username> --password-ref <password-ref> --from-address <from-address>",
+      "description": "Org SMTP config",
+      "positionals": [],
+      "flags": [
+        {
+          "name": "host",
+          "value": "<host>",
+          "optional": false
+        },
+        {
+          "name": "port",
+          "value": "<port>",
+          "optional": false
+        },
+        {
+          "name": "username",
+          "value": "<username>",
+          "optional": false
+        },
+        {
+          "name": "password-ref",
+          "value": "<password-ref>",
+          "optional": false
+        },
+        {
+          "name": "from-address",
+          "value": "<from-address>",
+          "optional": false
+        },
+        {
+          "name": "from-name",
+          "value": "<from-name>",
+          "optional": true
+        }
+      ],
+      "sdkMethods": [
+        "k9o.org.smtp.set()"
+      ],
+      "restRoutes": []
+    },
+    {
+      "path": [
+        "org",
+        "smtp",
+        "test"
+      ],
+      "aliases": [],
+      "usage": "k9o org smtp test --to <email> [--subject <text>]",
+      "sample": "k9o org smtp test --to <email>",
+      "description": "Org SMTP config",
+      "positionals": [],
+      "flags": [
+        {
+          "name": "to",
+          "value": "<email>",
+          "optional": false
+        },
+        {
+          "name": "subject",
+          "value": "<text>",
+          "optional": true
+        }
+      ],
+      "sdkMethods": [
+        "k9o.org.smtp.test()"
+      ],
+      "restRoutes": []
+    },
+    {
+      "path": [
+        "org",
+        "smtp",
+        "unset"
+      ],
+      "aliases": [],
+      "usage": "k9o org smtp unset",
+      "sample": "k9o org smtp unset",
+      "description": "Org SMTP config",
+      "positionals": [],
+      "flags": [],
+      "sdkMethods": [
+        "k9o.org.smtp.unset()"
+      ],
+      "restRoutes": []
+    },
+    {
+      "path": [
+        "policy",
+        "apply"
+      ],
+      "aliases": [],
+      "usage": "k9o policy apply <file> [<file> ...]",
+      "sample": "k9o policy apply <file>",
+      "description": "Create a draft bundle from one or more policy JSON files",
+      "positionals": [
+        {
+          "name": "file",
+          "optional": false
+        },
+        {
+          "name": "file",
+          "optional": true
+        }
+      ],
+      "flags": [],
+      "sdkMethods": [
+        "k9o.policies.create()"
+      ],
+      "restRoutes": []
+    },
+    {
+      "path": [
+        "policy",
+        "current"
+      ],
+      "aliases": [],
+      "usage": "k9o policy current",
+      "sample": "k9o policy current",
+      "description": "Show the currently-published policy",
+      "positionals": [],
+      "flags": [],
+      "sdkMethods": [
+        "k9o.policies.current()"
+      ],
+      "restRoutes": []
+    },
+    {
+      "path": [
+        "policy",
+        "get"
+      ],
+      "aliases": [],
+      "usage": "k9o policy get <id>",
+      "sample": "k9o policy get <id>",
+      "description": "Get a policy bundle by id",
+      "positionals": [
+        {
+          "name": "id",
+          "optional": false
+        }
+      ],
+      "flags": [],
+      "sdkMethods": [
+        "k9o.policies.get()"
+      ],
+      "restRoutes": []
+    },
+    {
+      "path": [
+        "policy",
+        "list"
+      ],
+      "aliases": [],
+      "usage": "k9o policy list",
+      "sample": "k9o policy list",
+      "description": "List policy bundles (--status draft|published|superseded)",
+      "positionals": [],
+      "flags": [],
+      "sdkMethods": [
+        "k9o.policies.list()"
+      ],
+      "restRoutes": []
+    },
+    {
+      "path": [
+        "policy",
+        "publish"
+      ],
+      "aliases": [],
+      "usage": "k9o policy publish <id>",
+      "sample": "k9o policy publish <id>",
+      "description": "Publish a draft bundle (activate on the project)",
+      "positionals": [
+        {
+          "name": "id",
+          "optional": false
+        }
+      ],
+      "flags": [],
+      "sdkMethods": [
+        "k9o.policies.publish()"
+      ],
+      "restRoutes": []
+    },
+    {
+      "path": [
+        "policy",
+        "validate"
+      ],
+      "aliases": [],
+      "usage": "k9o policy validate <file> [<file> ...]",
+      "sample": "k9o policy validate <file>",
+      "description": "Check one or more policy JSON files without persisting",
+      "positionals": [
+        {
+          "name": "file",
+          "optional": false
+        },
+        {
+          "name": "file",
+          "optional": true
+        }
+      ],
+      "flags": [],
+      "sdkMethods": [
+        "k9o.policies.validate()"
+      ],
+      "restRoutes": []
+    },
+    {
+      "path": [
+        "project",
+        "create"
+      ],
+      "aliases": [],
+      "usage": "k9o project create <slug> [--name <display name>] [--region <code>] [--custody-mode PLATFORM_MANAGED|SKR|BYOK|HYOK] --slug <slug>",
+      "sample": "k9o project create <slug> --slug <slug>",
+      "description": "Create a new project (display name defaults to the slug)",
+      "positionals": [
+        {
+          "name": "slug",
+          "optional": false
+        }
+      ],
+      "flags": [
+        {
+          "name": "name",
+          "value": "<display name>",
+          "optional": true
+        },
+        {
+          "name": "region",
+          "value": "<code>",
+          "optional": true
+        },
+        {
+          "name": "custody-mode",
+          "value": "PLATFORM_MANAGED|SKR|BYOK|HYOK",
+          "optional": true
+        },
+        {
+          "name": "slug",
+          "value": "<slug>",
+          "optional": false
+        }
+      ],
+      "sdkMethods": [
+        "k9o.projects.create()"
+      ],
+      "restRoutes": []
+    },
+    {
+      "path": [
+        "project",
+        "get"
+      ],
+      "aliases": [],
+      "usage": "k9o project get <slug>",
+      "sample": "k9o project get <slug>",
+      "description": "Get a project by slug",
+      "positionals": [
+        {
+          "name": "slug",
+          "optional": false
+        }
+      ],
+      "flags": [],
+      "sdkMethods": [
+        "k9o.projects.get()"
+      ],
+      "restRoutes": []
+    },
+    {
+      "path": [
+        "project",
+        "list"
+      ],
+      "aliases": [],
+      "usage": "k9o project list",
+      "sample": "k9o project list",
+      "description": "List projects accessible to the caller",
+      "positionals": [],
+      "flags": [],
+      "sdkMethods": [
+        "k9o.projects.list()"
+      ],
+      "restRoutes": []
+    },
+    {
+      "path": [
+        "project",
+        "set-active"
+      ],
+      "aliases": [],
+      "usage": "k9o project set-active <slug>",
+      "sample": "k9o project set-active <slug>",
+      "description": "Set the active project for this profile",
+      "positionals": [
+        {
+          "name": "slug",
+          "optional": false
+        }
+      ],
+      "flags": [],
+      "sdkMethods": [],
+      "restRoutes": []
+    },
+    {
+      "path": [
+        "query"
+      ],
+      "aliases": [],
+      "usage": "k9o query <sql|-> [--params '<json>']",
+      "sample": "k9o query <sql|->",
+      "description": "Run one read-only SQL statement: query <sql|-> [--params <json>]",
+      "positionals": [
+        {
+          "name": "sql|-",
+          "optional": false
+        }
+      ],
+      "flags": [
+        {
+          "name": "params",
+          "value": "'<json>'",
+          "optional": true
+        }
+      ],
+      "sdkMethods": [
+        "k9o.query()"
+      ],
+      "restRoutes": []
+    },
+    {
+      "path": [
+        "rollups",
+        "list"
+      ],
+      "aliases": [],
+      "usage": "k9o rollups list",
+      "sample": "k9o rollups list",
+      "description": "List the project's rollups you can read, with their endpoints",
+      "positionals": [],
+      "flags": [],
+      "sdkMethods": [
+        "k9o.rollups.list()"
+      ],
+      "restRoutes": []
+    },
+    {
+      "path": [
+        "rollups",
+        "read"
+      ],
+      "aliases": [],
+      "usage": "k9o rollups read <slug> [--from <ISO time>] [--to <ISO time>] [--dims a,b]",
+      "sample": "k9o rollups read <slug>",
+      "description": "Read the rollup's cells for a time range (default: the last 24 hours; at most 50000 cells). A cell below the cohort threshold prints as suppressed. --dims projects onto some dimensions; only count, sum, min and max measures combine.",
+      "positionals": [
+        {
+          "name": "slug",
+          "optional": false
+        }
+      ],
+      "flags": [
+        {
+          "name": "from",
+          "value": "<ISO time>",
+          "optional": true
+        },
+        {
+          "name": "to",
+          "value": "<ISO time>",
+          "optional": true
+        },
+        {
+          "name": "dims",
+          "value": "a,b",
+          "optional": true
+        }
+      ],
+      "sdkMethods": [
+        "k9o.rollups.read()"
+      ],
+      "restRoutes": []
+    },
+    {
+      "path": [
+        "rollups",
+        "subscribe"
+      ],
+      "aliases": [],
+      "usage": "k9o rollups subscribe <slug> [--from-sequence N] [--count N]",
+      "sample": "k9o rollups subscribe <slug>",
+      "description": "Follow a rollup live, one cell per line (JSON lines with --output json; a cell below the cohort threshold shows its status and reason), until interrupted (Ctrl-C) or --count cells.",
+      "positionals": [
+        {
+          "name": "slug",
+          "optional": false
+        }
+      ],
+      "flags": [
+        {
+          "name": "from-sequence",
+          "value": "N",
+          "optional": true
+        },
+        {
+          "name": "count",
+          "value": "N",
+          "optional": true
+        }
+      ],
+      "sdkMethods": [
+        "k9o.rollups.subscribe()"
+      ],
+      "restRoutes": []
+    },
+    {
+      "path": [
+        "schedule",
+        "create"
+      ],
+      "aliases": [],
+      "usage": "k9o schedule create --function <name> --cron <expr> [--timezone <tz>] [--catchup skip|run_once|run_all] [--collection <name>] [--disabled] [--log-ok-invocations]",
+      "sample": "k9o schedule create --function <name> --cron <expr>",
+      "description": "Create a schedule. --cron is five fields (minute hour day month weekday) or @yearly, @annually, @monthly, @weekly, @daily, @midnight, @hourly (stored expanded). --timezone is UTC (default) or Region/City.",
+      "positionals": [],
+      "flags": [
+        {
+          "name": "function",
+          "value": "<name>",
+          "optional": false
+        },
+        {
+          "name": "cron",
+          "value": "<expr>",
+          "optional": false
+        },
+        {
+          "name": "timezone",
+          "value": "<tz>",
+          "optional": true
+        },
+        {
+          "name": "catchup",
+          "value": "skip|run_once|run_all",
+          "optional": true
+        },
+        {
+          "name": "collection",
+          "value": "<name>",
+          "optional": true
+        },
+        {
+          "name": "disabled",
+          "value": null,
+          "optional": true
+        },
+        {
+          "name": "log-ok-invocations",
+          "value": null,
+          "optional": true
+        }
+      ],
+      "sdkMethods": [
+        "k9o.schedules.create()"
+      ],
+      "restRoutes": []
+    },
+    {
+      "path": [
+        "schedule",
+        "delete"
+      ],
+      "aliases": [],
+      "usage": "k9o schedule delete <id>",
+      "sample": "k9o schedule delete <id>",
+      "description": "Delete a schedule",
+      "positionals": [
+        {
+          "name": "id",
+          "optional": false
+        }
+      ],
+      "flags": [],
+      "sdkMethods": [
+        "k9o.schedules.delete()"
+      ],
+      "restRoutes": []
+    },
+    {
+      "path": [
+        "schedule",
+        "get"
+      ],
+      "aliases": [],
+      "usage": "k9o schedule get <id>",
+      "sample": "k9o schedule get <id>",
+      "description": "Show one schedule",
+      "positionals": [
+        {
+          "name": "id",
+          "optional": false
+        }
+      ],
+      "flags": [],
+      "sdkMethods": [
+        "k9o.schedules.get()"
+      ],
+      "restRoutes": []
+    },
+    {
+      "path": [
+        "schedule",
+        "list"
+      ],
+      "aliases": [],
+      "usage": "k9o schedule list [--status active|paused] [--function <name>] [--limit <1-200>] [--cursor <c>]",
+      "sample": "k9o schedule list",
+      "description": "List schedules, newest first. Pages of --limit (default 50); pass the printed cursor to --cursor for the next page.",
+      "positionals": [],
+      "flags": [
+        {
+          "name": "status",
+          "value": "active|paused",
+          "optional": true
+        },
+        {
+          "name": "function",
+          "value": "<name>",
+          "optional": true
+        },
+        {
+          "name": "limit",
+          "value": "<1-200>",
+          "optional": true
+        },
+        {
+          "name": "cursor",
+          "value": "<c>",
+          "optional": true
+        }
+      ],
+      "sdkMethods": [
+        "k9o.schedules.list()"
+      ],
+      "restRoutes": []
+    },
+    {
+      "path": [
+        "schedule",
+        "run-now"
+      ],
+      "aliases": [],
+      "usage": "k9o schedule run-now <id>",
+      "sample": "k9o schedule run-now <id>",
+      "description": "Start one run now, outside the timetable",
+      "positionals": [
+        {
+          "name": "id",
+          "optional": false
+        }
+      ],
+      "flags": [],
+      "sdkMethods": [
+        "k9o.schedules.runNow()"
+      ],
+      "restRoutes": []
+    },
+    {
+      "path": [
+        "schedule",
+        "runs"
+      ],
+      "aliases": [],
+      "usage": "k9o schedule runs <id> [--limit <1-200>] [--cursor <c>]",
+      "sample": "k9o schedule runs <id>",
+      "description": "List the schedule's runs, newest first",
+      "positionals": [
+        {
+          "name": "id",
+          "optional": false
+        }
+      ],
+      "flags": [
+        {
+          "name": "limit",
+          "value": "<1-200>",
+          "optional": true
+        },
+        {
+          "name": "cursor",
+          "value": "<c>",
+          "optional": true
+        }
+      ],
+      "sdkMethods": [
+        "k9o.schedules.runs()"
+      ],
+      "restRoutes": []
+    },
+    {
+      "path": [
+        "schedule",
+        "update"
+      ],
+      "aliases": [],
+      "usage": "k9o schedule update <id> [--cron <expr>] [--timezone <tz>] [--catchup <policy>] [--status active|paused] [--log-ok-invocations | --no-log-ok-invocations <no-log-ok-invocations>]",
+      "sample": "k9o schedule update <id>",
+      "description": "Change a schedule (at least one flag). The function is fixed.",
+      "positionals": [
+        {
+          "name": "id",
+          "optional": false
+        }
+      ],
+      "flags": [
+        {
+          "name": "cron",
+          "value": "<expr>",
+          "optional": true
+        },
+        {
+          "name": "timezone",
+          "value": "<tz>",
+          "optional": true
+        },
+        {
+          "name": "catchup",
+          "value": "<policy>",
+          "optional": true
+        },
+        {
+          "name": "status",
+          "value": "active|paused",
+          "optional": true
+        },
+        {
+          "name": "log-ok-invocations",
+          "value": null,
+          "optional": true
+        },
+        {
+          "name": "no-log-ok-invocations",
+          "value": "<no-log-ok-invocations>",
+          "optional": true
+        }
+      ],
+      "sdkMethods": [
+        "k9o.schedules.update()"
+      ],
+      "restRoutes": []
+    },
+    {
+      "path": [
+        "schema",
+        "collections"
+      ],
+      "aliases": [],
+      "usage": "k9o schema collections [--limit <1-200>] [--cursor <cursor>]",
+      "sample": "k9o schema collections",
+      "description": "List collections by name with row, column and index counts and the last migration. Pages of --limit (default 50); pass the printed cursor to --cursor for the next page.",
+      "positionals": [
+        {
+          "name": "cursor",
+          "optional": true
+        }
+      ],
+      "flags": [
+        {
+          "name": "limit",
+          "value": "<1-200>",
+          "optional": true
+        },
+        {
+          "name": "cursor",
+          "value": null,
+          "optional": true
+        }
+      ],
+      "sdkMethods": [
+        "k9o.schema.collections.list()"
+      ],
+      "restRoutes": []
+    },
+    {
+      "path": [
+        "search"
+      ],
+      "aliases": [],
+      "usage": "k9o search <collection> --column <name> --q <text> [--language <name>] [--type plain|phrase|websearch] [--limit N] [--cursor <cursor>]",
+      "sample": "k9o search <collection> --column <name> --q <text>",
+      "description": "Full-text search a collection: search <collection> --column <c> --q <text>",
+      "positionals": [
+        {
+          "name": "collection",
+          "optional": false
+        }
+      ],
+      "flags": [
+        {
+          "name": "column",
+          "value": "<name>",
+          "optional": false
+        },
+        {
+          "name": "q",
+          "value": "<text>",
+          "optional": false
+        },
+        {
+          "name": "language",
+          "value": "<name>",
+          "optional": true
+        },
+        {
+          "name": "type",
+          "value": "plain|phrase|websearch",
+          "optional": true
+        },
+        {
+          "name": "limit",
+          "value": "N",
+          "optional": true
+        },
+        {
+          "name": "cursor",
+          "value": "<cursor>",
+          "optional": true
+        }
+      ],
+      "sdkMethods": [
+        "k9o.search()"
+      ],
+      "restRoutes": []
+    },
+    {
+      "path": [
+        "showroom",
+        "list"
+      ],
+      "aliases": [],
+      "usage": "k9o showroom list List the available verticals",
+      "sample": "k9o showroom list List the available verticals",
+      "description": "",
+      "positionals": [],
+      "flags": [],
+      "sdkMethods": [],
+      "restRoutes": []
+    },
+    {
+      "path": [
+        "stack",
+        "down"
+      ],
+      "aliases": [],
+      "usage": "k9o stack down",
+      "sample": "k9o stack down",
+      "description": "Stop the stack (keeps volumes)",
+      "positionals": [],
+      "flags": [],
+      "sdkMethods": [],
+      "restRoutes": []
+    },
+    {
+      "path": [
+        "stack",
+        "logs"
+      ],
+      "aliases": [],
+      "usage": "k9o stack logs [service]",
+      "sample": "k9o stack logs",
+      "description": "Tail logs (all services, or one by name)",
+      "positionals": [],
+      "flags": [],
+      "sdkMethods": [],
+      "restRoutes": []
+    },
+    {
+      "path": [
+        "stack",
+        "nuke"
+      ],
+      "aliases": [],
+      "usage": "k9o stack nuke [--yes]",
+      "sample": "k9o stack nuke",
+      "description": "Tear the stack down and wipe volumes",
+      "positionals": [],
+      "flags": [
+        {
+          "name": "yes",
+          "value": null,
+          "optional": true
+        }
+      ],
+      "sdkMethods": [],
+      "restRoutes": []
+    },
+    {
+      "path": [
+        "stack",
+        "status"
+      ],
+      "aliases": [],
+      "usage": "k9o stack status",
+      "sample": "k9o stack status",
+      "description": "Print the health/endpoint map",
+      "positionals": [],
+      "flags": [],
+      "sdkMethods": [],
+      "restRoutes": []
+    },
+    {
+      "path": [
+        "stack",
+        "up"
+      ],
+      "aliases": [],
+      "usage": "k9o stack up [--minimal|--ai|--full <minimal|--ai|--full>]",
+      "sample": "k9o stack up",
+      "description": "Bring the stack up (tiers are a superset — see below)",
+      "positionals": [],
+      "flags": [
+        {
+          "name": "minimal|--ai|--full",
+          "value": "<minimal|--ai|--full>",
+          "optional": true
+        }
+      ],
+      "sdkMethods": [],
+      "restRoutes": []
+    },
+    {
+      "path": [
+        "storage",
+        "buckets",
+        "create"
+      ],
+      "aliases": [],
+      "usage": "k9o storage buckets create <name> [flags]",
+      "sample": "k9o storage buckets create <name>",
+      "description": "",
+      "positionals": [
+        {
+          "name": "name",
+          "optional": false
+        }
+      ],
+      "flags": [],
+      "sdkMethods": [
+        "k9o.storage.createBucket()"
+      ],
+      "restRoutes": []
+    },
+    {
+      "path": [
+        "storage",
+        "buckets",
+        "delete"
+      ],
+      "aliases": [],
+      "usage": "k9o storage buckets delete <name> [--empty]",
+      "sample": "k9o storage buckets delete <name>",
+      "description": "",
+      "positionals": [
+        {
+          "name": "name",
+          "optional": false
+        }
+      ],
+      "flags": [
+        {
+          "name": "empty",
+          "value": null,
+          "optional": true
+        }
+      ],
+      "sdkMethods": [
+        "k9o.storage.deleteBucket()"
+      ],
+      "restRoutes": []
+    },
+    {
+      "path": [
+        "storage",
+        "buckets",
+        "get"
+      ],
+      "aliases": [],
+      "usage": "k9o storage buckets get <name>",
+      "sample": "k9o storage buckets get <name>",
+      "description": "",
+      "positionals": [
+        {
+          "name": "name",
+          "optional": false
+        }
+      ],
+      "flags": [],
+      "sdkMethods": [
+        "k9o.storage.getBucket()"
+      ],
+      "restRoutes": []
+    },
+    {
+      "path": [
+        "storage",
+        "buckets",
+        "list"
+      ],
+      "aliases": [],
+      "usage": "k9o storage buckets list",
+      "sample": "k9o storage buckets list",
+      "description": "",
+      "positionals": [],
+      "flags": [],
+      "sdkMethods": [
+        "k9o.storage.listBuckets()"
+      ],
+      "restRoutes": []
+    },
+    {
+      "path": [
+        "storage",
+        "buckets",
+        "update"
+      ],
+      "aliases": [],
+      "usage": "k9o storage buckets update <name> [flags]",
+      "sample": "k9o storage buckets update <name>",
+      "description": "",
+      "positionals": [
+        {
+          "name": "name",
+          "optional": false
+        }
+      ],
+      "flags": [],
+      "sdkMethods": [
+        "k9o.storage.updateBucket()"
+      ],
+      "restRoutes": []
+    },
+    {
+      "path": [
+        "storage",
+        "create"
+      ],
+      "aliases": [],
+      "usage": "k9o storage create",
+      "sample": "k9o storage create",
+      "description": "Register a location from a pre-created credential reference",
+      "positionals": [],
+      "flags": [],
+      "sdkMethods": [],
+      "restRoutes": []
+    },
+    {
+      "path": [
+        "storage",
+        "get"
+      ],
+      "aliases": [],
+      "usage": "k9o storage get <locationId>",
+      "sample": "k9o storage get <locationId>",
+      "description": "Show one location",
+      "positionals": [
+        {
+          "name": "locationId",
+          "optional": false
+        }
+      ],
+      "flags": [],
+      "sdkMethods": [],
+      "restRoutes": []
+    },
+    {
+      "path": [
+        "storage",
+        "list"
+      ],
+      "aliases": [],
+      "usage": "k9o storage list",
+      "sample": "k9o storage list",
+      "description": "List the live storage locations of the active project",
+      "positionals": [],
+      "flags": [],
+      "sdkMethods": [],
+      "restRoutes": []
+    },
+    {
+      "path": [
+        "storage",
+        "locations",
+        "retire"
+      ],
+      "aliases": [],
+      "usage": "k9o storage locations retire <locationId>",
+      "sample": "k9o storage locations retire <locationId>",
+      "description": "Retire a location (refused while a bucket or Dataset uses it)",
+      "positionals": [
+        {
+          "name": "locationId",
+          "optional": false
+        }
+      ],
+      "flags": [],
+      "sdkMethods": [
+        "k9o.storage.locations.retire()"
+      ],
+      "restRoutes": []
+    },
+    {
+      "path": [
+        "storage",
+        "locations",
+        "test"
+      ],
+      "aliases": [],
+      "usage": "k9o storage locations test <locationId>",
+      "sample": "k9o storage locations test <locationId>",
+      "description": "Dry-run check of a location",
+      "positionals": [
+        {
+          "name": "locationId",
+          "optional": false
+        }
+      ],
+      "flags": [],
+      "sdkMethods": [
+        "k9o.storage.locations.test()"
+      ],
+      "restRoutes": []
+    },
+    {
+      "path": [
+        "storage",
+        "objects",
+        "delete"
+      ],
+      "aliases": [],
+      "usage": "k9o storage objects delete <bucket> <path>",
+      "sample": "k9o storage objects delete <bucket> <path>",
+      "description": "",
+      "positionals": [
+        {
+          "name": "bucket",
+          "optional": false
+        },
+        {
+          "name": "path",
+          "optional": false
+        }
+      ],
+      "flags": [],
+      "sdkMethods": [
+        "k9o.storage.from('<bucket>').remove()"
+      ],
+      "restRoutes": []
+    },
+    {
+      "path": [
+        "storage",
+        "objects",
+        "list"
+      ],
+      "aliases": [],
+      "usage": "k9o storage objects list <bucket> [--prefix <p>]",
+      "sample": "k9o storage objects list <bucket>",
+      "description": "",
+      "positionals": [
+        {
+          "name": "bucket",
+          "optional": false
+        }
+      ],
+      "flags": [
+        {
+          "name": "prefix",
+          "value": "<p>",
+          "optional": true
+        }
+      ],
+      "sdkMethods": [
+        "k9o.storage.from('<bucket>').list()"
+      ],
+      "restRoutes": []
+    },
+    {
+      "path": [
+        "storage",
+        "objects",
+        "sign"
+      ],
+      "aliases": [],
+      "usage": "k9o storage objects sign <bucket> <path> --expires-in <seconds> [--download]",
+      "sample": "k9o storage objects sign <bucket> <path> --expires-in <seconds>",
+      "description": "",
+      "positionals": [
+        {
+          "name": "bucket",
+          "optional": false
+        },
+        {
+          "name": "path",
+          "optional": false
+        }
+      ],
+      "flags": [
+        {
+          "name": "expires-in",
+          "value": "<seconds>",
+          "optional": false
+        },
+        {
+          "name": "download",
+          "value": null,
+          "optional": true
+        }
+      ],
+      "sdkMethods": [
+        "k9o.storage.from('<bucket>').createSignedUrl()"
+      ],
+      "restRoutes": []
+    },
+    {
+      "path": [
+        "storage",
+        "objects",
+        "upload"
+      ],
+      "aliases": [],
+      "usage": "k9o storage objects upload <bucket> <path> (--file <local-file> | --stdin) [--content-type <t>] [--upsert] [--metadata k=v,k=v]",
+      "sample": "k9o storage objects upload <bucket> <path> --file <local-file>",
+      "description": "",
+      "positionals": [
+        {
+          "name": "bucket",
+          "optional": false
+        },
+        {
+          "name": "path",
+          "optional": false
+        }
+      ],
+      "flags": [
+        {
+          "name": "file",
+          "value": "<local-file>",
+          "optional": false
+        },
+        {
+          "name": "stdin",
+          "value": null,
+          "optional": true
+        },
+        {
+          "name": "content-type",
+          "value": "<t>",
+          "optional": true
+        },
+        {
+          "name": "upsert",
+          "value": null,
+          "optional": true
+        },
+        {
+          "name": "metadata",
+          "value": "k=v,k=v",
+          "optional": true
+        }
+      ],
+      "sdkMethods": [
+        "k9o.storage.from('<bucket>').upload()"
+      ],
+      "restRoutes": []
+    },
+    {
+      "path": [
+        "storage",
+        "update"
+      ],
+      "aliases": [],
+      "usage": "k9o storage update <locationId>",
+      "sample": "k9o storage update <locationId>",
+      "description": "Change a live location",
+      "positionals": [
+        {
+          "name": "locationId",
+          "optional": false
+        }
+      ],
+      "flags": [],
+      "sdkMethods": [],
+      "restRoutes": []
+    },
+    {
+      "path": [
+        "stream",
+        "create"
+      ],
+      "aliases": [],
+      "usage": "k9o stream create --name <display name> --max-bytes <size> [--retention <time>]",
+      "sample": "k9o stream create --name <display name> --max-bytes <size>",
+      "description": "Create a stream (project admin) --max-bytes 10 MiB to 64 GiB: bytes, or a size like 10MiB or 4GiB --retention whole hours, at least 1h: seconds, or 24h / 7d (default 24h)",
+      "positionals": [],
+      "flags": [
+        {
+          "name": "name",
+          "value": "<display name>",
+          "optional": false
+        },
+        {
+          "name": "max-bytes",
+          "value": "<size>",
+          "optional": false
+        },
+        {
+          "name": "retention",
+          "value": "<time>",
+          "optional": true
+        }
+      ],
+      "sdkMethods": [
+        "k9o.streams.create()"
+      ],
+      "restRoutes": []
+    },
+    {
+      "path": [
+        "stream",
+        "delete"
+      ],
+      "aliases": [],
+      "usage": "k9o stream delete <slug>",
+      "sample": "k9o stream delete <slug>",
+      "description": "Retire a stream (project admin)",
+      "positionals": [
+        {
+          "name": "slug",
+          "optional": false
+        }
+      ],
+      "flags": [],
+      "sdkMethods": [
+        "k9o.streams.delete()"
+      ],
+      "restRoutes": []
+    },
+    {
+      "path": [
+        "stream",
+        "get"
+      ],
+      "aliases": [],
+      "usage": "k9o stream get <slug>",
+      "sample": "k9o stream get <slug>",
+      "description": "Show one stream",
+      "positionals": [
+        {
+          "name": "slug",
+          "optional": false
+        }
+      ],
+      "flags": [],
+      "sdkMethods": [
+        "k9o.streams.get()"
+      ],
+      "restRoutes": []
+    },
+    {
+      "path": [
+        "stream",
+        "list"
+      ],
+      "aliases": [],
+      "usage": "k9o stream list",
+      "sample": "k9o stream list",
+      "description": "List the project's streams",
+      "positionals": [],
+      "flags": [],
+      "sdkMethods": [
+        "k9o.streams.list()"
+      ],
+      "restRoutes": []
+    },
+    {
+      "path": [
+        "stream",
+        "publish"
+      ],
+      "aliases": [],
+      "usage": "k9o stream publish <slug> --data <json|@file|-> [--subject <suffix>]",
+      "sample": "k9o stream publish <slug> --data <json|@file|->",
+      "description": "Append an event (project admin). '-' reads the JSON from stdin. --subject is up to 8 dot-separated tokens of [a-z0-9_-]",
+      "positionals": [
+        {
+          "name": "slug",
+          "optional": false
+        }
+      ],
+      "flags": [
+        {
+          "name": "data",
+          "value": "<json|@file|->",
+          "optional": false
+        },
+        {
+          "name": "subject",
+          "value": "<suffix>",
+          "optional": true
+        }
+      ],
+      "sdkMethods": [
+        "k9o.streams.publish()"
+      ],
+      "restRoutes": []
+    },
+    {
+      "path": [
+        "stream",
+        "replay"
+      ],
+      "aliases": [],
+      "usage": "k9o stream replay <slug> [--from <sequence>] [--until <sequence>] [--limit <n>]",
+      "sample": "k9o stream replay <slug>",
+      "description": "Read a bounded range once (project admin or auditor). --limit is 1 to 10000 (default 100). --from is exclusive.",
+      "positionals": [
+        {
+          "name": "slug",
+          "optional": false
+        }
+      ],
+      "flags": [
+        {
+          "name": "from",
+          "value": "<sequence>",
+          "optional": true
+        },
+        {
+          "name": "until",
+          "value": "<sequence>",
+          "optional": true
+        },
+        {
+          "name": "limit",
+          "value": "<n>",
+          "optional": true
+        }
+      ],
+      "sdkMethods": [
+        "k9o.streams.replay()"
+      ],
+      "restRoutes": []
+    },
+    {
+      "path": [
+        "stream",
+        "tail"
+      ],
+      "aliases": [],
+      "usage": "k9o stream tail <slug> [--from <sequence>] [--count <n>]",
+      "sample": "k9o stream tail <slug>",
+      "description": "Follow a stream live, one event per line, until interrupted (project admin or auditor). Starts after --from; with --output json each line is one JSON event.",
+      "positionals": [
+        {
+          "name": "slug",
+          "optional": false
+        }
+      ],
+      "flags": [
+        {
+          "name": "from",
+          "value": "<sequence>",
+          "optional": true
+        },
+        {
+          "name": "count",
+          "value": "<n>",
+          "optional": true
+        }
+      ],
+      "sdkMethods": [
+        "k9o.streams.subscribe()"
+      ],
+      "restRoutes": []
+    },
+    {
+      "path": [
+        "vault-secret",
+        "create"
+      ],
+      "aliases": [],
+      "usage": "k9o vault-secret create <name> --region <region>",
+      "sample": "k9o vault-secret create <name> --region <region>",
+      "description": "Seal a new secret",
+      "positionals": [
+        {
+          "name": "name",
+          "optional": false
+        }
+      ],
+      "flags": [
+        {
+          "name": "region",
+          "value": "<region>",
+          "optional": false
+        }
+      ],
+      "sdkMethods": [
+        "k9o.kibo.vault.secrets.create()"
+      ],
+      "restRoutes": []
+    },
+    {
+      "path": [
+        "vault-secret",
+        "delete"
+      ],
+      "aliases": [],
+      "usage": "k9o vault-secret delete <name> --region <region>",
+      "sample": "k9o vault-secret delete <name> --region <region>",
+      "description": "Retire a secret",
+      "positionals": [
+        {
+          "name": "name",
+          "optional": false
+        }
+      ],
+      "flags": [
+        {
+          "name": "region",
+          "value": "<region>",
+          "optional": false
+        }
+      ],
+      "sdkMethods": [
+        "k9o.kibo.vault.secrets.delete()"
+      ],
+      "restRoutes": []
+    },
+    {
+      "path": [
+        "vault-secret",
+        "get"
+      ],
+      "aliases": [],
+      "usage": "k9o vault-secret get <name> --region <region>",
+      "sample": "k9o vault-secret get <name> --region <region>",
+      "description": "Read a secret's metadata",
+      "positionals": [
+        {
+          "name": "name",
+          "optional": false
+        }
+      ],
+      "flags": [
+        {
+          "name": "region",
+          "value": "<region>",
+          "optional": false
+        }
+      ],
+      "sdkMethods": [
+        "k9o.kibo.vault.secrets.get()"
+      ],
+      "restRoutes": []
+    },
+    {
+      "path": [
+        "vault-secret",
+        "list"
+      ],
+      "aliases": [],
+      "usage": "k9o vault-secret list [--prefix <prefix>] [--cursor <cursor>] [--limit <limit>]",
+      "sample": "k9o vault-secret list",
+      "description": "List secrets (metadata only)",
+      "positionals": [],
+      "flags": [
+        {
+          "name": "prefix",
+          "value": "<prefix>",
+          "optional": true
+        },
+        {
+          "name": "cursor",
+          "value": "<cursor>",
+          "optional": true
+        },
+        {
+          "name": "limit",
+          "value": "<limit>",
+          "optional": true
+        }
+      ],
+      "sdkMethods": [
+        "k9o.kibo.vault.secrets.list()"
+      ],
+      "restRoutes": []
+    },
+    {
+      "path": [
+        "vault-secret",
+        "move"
+      ],
+      "aliases": [],
+      "usage": "k9o vault-secret move <name> --new-path <path> --region <region>",
+      "sample": "k9o vault-secret move <name> --new-path <path> --region <region>",
+      "description": "Rename a secret's hierarchical path",
+      "positionals": [
+        {
+          "name": "name",
+          "optional": false
+        }
+      ],
+      "flags": [
+        {
+          "name": "new-path",
+          "value": "<path>",
+          "optional": false
+        },
+        {
+          "name": "region",
+          "value": "<region>",
+          "optional": false
+        }
+      ],
+      "sdkMethods": [
+        "k9o.kibo.vault.secrets.move()"
+      ],
+      "restRoutes": []
+    },
+    {
+      "path": [
+        "vault-secret",
+        "reveal"
+      ],
+      "aliases": [],
+      "usage": "k9o vault-secret reveal <name> --region <region>",
+      "sample": "k9o vault-secret reveal <name> --region <region>",
+      "description": "Mint a challenge + reveal the plaintext in one call",
+      "positionals": [
+        {
+          "name": "name",
+          "optional": false
+        }
+      ],
+      "flags": [
+        {
+          "name": "region",
+          "value": "<region>",
+          "optional": false
+        }
+      ],
+      "sdkMethods": [
+        "k9o.kibo.vault.secrets.revealChallenge()",
+        "k9o.kibo.vault.secrets.reveal()"
+      ],
+      "restRoutes": []
+    },
+    {
+      "path": [
+        "vault-secret",
+        "rotate"
+      ],
+      "aliases": [],
+      "usage": "k9o vault-secret rotate <name> --region <region>",
+      "sample": "k9o vault-secret rotate <name> --region <region>",
+      "description": "Re-wrap under a fresh key (content unchanged)",
+      "positionals": [
+        {
+          "name": "name",
+          "optional": false
+        }
+      ],
+      "flags": [
+        {
+          "name": "region",
+          "value": "<region>",
+          "optional": false
+        }
+      ],
+      "sdkMethods": [
+        "k9o.kibo.vault.secrets.rotate()"
+      ],
+      "restRoutes": []
+    },
+    {
+      "path": [
+        "vault-secret",
+        "update"
+      ],
+      "aliases": [],
+      "usage": "k9o vault-secret update <name> --region <region>",
+      "sample": "k9o vault-secret update <name> --region <region>",
+      "description": "Set a new value (bumps version)",
+      "positionals": [
+        {
+          "name": "name",
+          "optional": false
+        }
+      ],
+      "flags": [
+        {
+          "name": "region",
+          "value": "<region>",
+          "optional": false
+        }
+      ],
+      "sdkMethods": [
+        "k9o.kibo.vault.secrets.update()"
+      ],
+      "restRoutes": []
+    },
+    {
+      "path": [
+        "vectors",
+        "nearest"
+      ],
+      "aliases": [],
+      "usage": "k9o vectors nearest <collection> --vector '<json array>' | --vector-file <path|-> [--top-k <1-1000>] [--min-score <number>] [--metric cosine|euclidean|dot] [--filters '<json object>']",
+      "sample": "k9o vectors nearest <collection> --vector '<json array>' --vector-file <path|->",
+      "description": "The rows nearest to the vector, closest first. --vector-file reads the array from a file, or from stdin with -. --top-k defaults to 10, --metric to cosine. --filters are equality filters on id, contentHash, source.<key> and metadata.<key>.",
+      "positionals": [
+        {
+          "name": "collection",
+          "optional": false
+        }
+      ],
+      "flags": [
+        {
+          "name": "vector",
+          "value": "'<json array>'",
+          "optional": false
+        },
+        {
+          "name": "vector-file",
+          "value": "<path|->",
+          "optional": false
+        },
+        {
+          "name": "top-k",
+          "value": "<1-1000>",
+          "optional": true
+        },
+        {
+          "name": "min-score",
+          "value": "<number>",
+          "optional": true
+        },
+        {
+          "name": "metric",
+          "value": null,
+          "optional": true
+        },
+        {
+          "name": "filters",
+          "value": "'<json object>'",
+          "optional": true
+        }
+      ],
+      "sdkMethods": [
+        "k9o.vectors.nearest()"
+      ],
+      "restRoutes": []
+    },
+    {
+      "path": [
+        "vectors",
+        "upsert"
+      ],
+      "aliases": [],
+      "usage": "k9o vectors upsert <collection> --rows '<json array>' | --rows-file <path|->",
+      "sample": "k9o vectors upsert <collection> --rows '<json array>' --rows-file <path|->",
+      "description": "Insert or overwrite 1 to 1000 rows. A row is { vector, _source: { handle, chunkIndex }, id?, contentHash?, text?, metadata?, subjectIds? }. subjectIds ([\"eu_...\"]) is required unless the collection is shared.",
+      "positionals": [
+        {
+          "name": "collection",
+          "optional": false
+        }
+      ],
+      "flags": [
+        {
+          "name": "rows",
+          "value": "'<json array>'",
+          "optional": false
+        },
+        {
+          "name": "rows-file",
+          "value": "<path|->",
+          "optional": false
+        }
+      ],
+      "sdkMethods": [
+        "k9o.vectors.upsert()"
+      ],
+      "restRoutes": []
+    },
+    {
+      "path": [
+        "whoami"
+      ],
+      "aliases": [],
+      "usage": "k9o whoami [--profile <name>]",
+      "sample": "k9o whoami",
+      "description": "Print the active identity",
+      "positionals": [],
+      "flags": [
+        {
+          "name": "profile",
+          "value": "<name>",
+          "optional": true
+        }
+      ],
+      "sdkMethods": [],
+      "restRoutes": []
+    }
+  ],
+  "sdkMethodIndex": {
+    "k9o.ai.embed()": [
+      "ai embed"
+    ],
+    "k9o.ai.generate()": [
+      "ai generate"
+    ],
+    "k9o.analytics.create()": [
+      "analytics create"
+    ],
+    "k9o.analytics.delete()": [
+      "analytics delete"
+    ],
+    "k9o.analytics.downloadOriginal()": [
+      "analytics download-original"
+    ],
+    "k9o.analytics.get()": [
+      "analytics get"
+    ],
+    "k9o.analytics.list()": [
+      "analytics list"
+    ],
+    "k9o.analytics.materialize()": [
+      "analytics materialize"
+    ],
+    "k9o.analytics.query()": [
+      "analytics query"
+    ],
+    "k9o.analytics.read()": [
+      "analytics read"
+    ],
+    "k9o.analytics.rollups.create()": [
+      "analytics rollups create"
+    ],
+    "k9o.analytics.rollups.delete()": [
+      "analytics rollups delete"
+    ],
+    "k9o.analytics.rollups.list()": [
+      "analytics rollups list"
+    ],
+    "k9o.analytics.rollups.reattest()": [
+      "analytics rollups reattest"
+    ],
+    "k9o.analytics.schedules.create()": [
+      "analytics schedules create"
+    ],
+    "k9o.analytics.schedules.delete()": [
+      "analytics schedules delete"
+    ],
+    "k9o.analytics.schedules.list()": [
+      "analytics schedules list"
+    ],
+    "k9o.analytics.schedules.reattest()": [
+      "analytics schedules reattest"
+    ],
+    "k9o.analytics.upload()": [
+      "analytics upload"
+    ],
+    "k9o.analytics.write()": [
+      "analytics write"
+    ],
+    "k9o.approvalPolicies.create()": [
+      "approval-policy create"
+    ],
+    "k9o.approvalPolicies.delete()": [
+      "approval-policy delete"
+    ],
+    "k9o.approvalPolicies.list()": [
+      "approval-policy list"
+    ],
+    "k9o.approvals.approve()": [
+      "approvals approve"
+    ],
+    "k9o.approvals.bulk()": [
+      "approvals bulk"
+    ],
+    "k9o.approvals.comments.add()": [
+      "approvals comment"
+    ],
+    "k9o.approvals.comments.list()": [
+      "approvals comments"
+    ],
+    "k9o.approvals.get()": [
+      "approvals get"
+    ],
+    "k9o.approvals.list()": [
+      "approvals list"
+    ],
+    "k9o.approvals.reject()": [
+      "approvals reject"
+    ],
+    "k9o.audit.query()": [
+      "audit export",
+      "audit query",
+      "audit recent"
+    ],
+    "k9o.audit.replay()": [
+      "audit replay"
+    ],
+    "k9o.audit.tail()": [
+      "audit tail"
+    ],
+    "k9o.crypto.decrypt()": [
+      "crypto decrypt"
+    ],
+    "k9o.crypto.encrypt()": [
+      "crypto encrypt"
+    ],
+    "k9o.crypto.federatedToken()": [
+      "crypto federated-token"
+    ],
+    "k9o.crypto.mode()": [
+      "crypto mode"
+    ],
+    "k9o.crypto.rewrap()": [
+      "crypto rewrap"
+    ],
+    "k9o.custody.status()": [
+      "custody status"
+    ],
+    "k9o.endUsers.get()": [
+      "end-user get"
+    ],
+    "k9o.endUsers.list()": [
+      "end-user list"
+    ],
+    "k9o.endUsers.roleGrants.grant()": [
+      "end-user role-grant grant"
+    ],
+    "k9o.endUsers.roleGrants.list()": [
+      "end-user role-grant list"
+    ],
+    "k9o.endUsers.roleGrants.revoke()": [
+      "end-user role-grant revoke"
+    ],
+    "k9o.from('<collection>').delete()": [
+      "data delete"
+    ],
+    "k9o.from('<collection>').insert()": [
+      "data insert"
+    ],
+    "k9o.from('<collection>').update()": [
+      "data update"
+    ],
+    "k9o.functions.delete()": [
+      "function delete"
+    ],
+    "k9o.functions.deploy()": [
+      "function deploy"
+    ],
+    "k9o.functions.get()": [
+      "function get"
+    ],
+    "k9o.functions.invoke()": [
+      "function invoke"
+    ],
+    "k9o.functions.list()": [
+      "function list"
+    ],
+    "k9o.functions.triggers.create()": [
+      "function trigger create"
+    ],
+    "k9o.functions.triggers.delete()": [
+      "function trigger delete"
+    ],
+    "k9o.functions.triggers.list()": [
+      "function trigger list"
+    ],
+    "k9o.functions.triggers.update()": [
+      "function trigger update"
+    ],
+    "k9o.functions.uploadArtifact()": [
+      "function deploy"
+    ],
+    "k9o.gate.identityProviders.create()": [
+      "idp create"
+    ],
+    "k9o.gate.identityProviders.list()": [
+      "idp list"
+    ],
+    "k9o.gate.identityProviders.testProvider()": [
+      "idp test"
+    ],
+    "k9o.gate.identityProviders.update()": [
+      "idp update"
+    ],
+    "k9o.keys.get()": [
+      "keys get"
+    ],
+    "k9o.keys.list()": [
+      "keys list"
+    ],
+    "k9o.keys.rotate()": [
+      "keys rotate"
+    ],
+    "k9o.kibo.vault.secrets.create()": [
+      "vault-secret create",
+      "byos-cred create"
+    ],
+    "k9o.kibo.vault.secrets.delete()": [
+      "vault-secret delete"
+    ],
+    "k9o.kibo.vault.secrets.get()": [
+      "vault-secret get"
+    ],
+    "k9o.kibo.vault.secrets.list()": [
+      "vault-secret list"
+    ],
+    "k9o.kibo.vault.secrets.move()": [
+      "vault-secret move"
+    ],
+    "k9o.kibo.vault.secrets.reveal()": [
+      "vault-secret reveal"
+    ],
+    "k9o.kibo.vault.secrets.revealChallenge()": [
+      "vault-secret reveal"
+    ],
+    "k9o.kibo.vault.secrets.rotate()": [
+      "vault-secret rotate"
+    ],
+    "k9o.kibo.vault.secrets.update()": [
+      "vault-secret update"
+    ],
+    "k9o.me.apiTokens.create()": [
+      "me api-tokens create"
+    ],
+    "k9o.me.apiTokens.delete()": [
+      "me api-tokens delete"
+    ],
+    "k9o.me.apiTokens.list()": [
+      "me api-tokens list"
+    ],
+    "k9o.me.profile.get()": [
+      "me profile get"
+    ],
+    "k9o.me.profile.update()": [
+      "me profile update"
+    ],
+    "k9o.me.sessions.list()": [
+      "me sessions list"
+    ],
+    "k9o.me.sessions.revoke()": [
+      "me sessions revoke"
+    ],
+    "k9o.me.sessions.revokeAll()": [
+      "me sessions revoke-all"
+    ],
+    "k9o.metadata.filter()": [
+      "metadata filter"
+    ],
+    "k9o.metadata.index.declare()": [
+      "metadata index declare"
+    ],
+    "k9o.metadata.index.get()": [
+      "metadata index get"
+    ],
+    "k9o.metadata.search()": [
+      "metadata search"
+    ],
+    "k9o.metadata.set()": [
+      "metadata set"
+    ],
+    "k9o.metadata.vectors.nearest()": [
+      "metadata nearest"
+    ],
+    "k9o.migrations.apply()": [
+      "migration apply"
+    ],
+    "k9o.migrations.applyPending()": [
+      "migration apply-pending"
+    ],
+    "k9o.migrations.list()": [
+      "migration list"
+    ],
+    "k9o.migrations.listPending()": [
+      "migration pending"
+    ],
+    "k9o.org.auditLog.query()": [
+      "org audit query"
+    ],
+    "k9o.org.gate.idpProviders.configure()": [
+      "org idp configure"
+    ],
+    "k9o.org.gate.idpProviders.create()": [
+      "org idp create"
+    ],
+    "k9o.org.gate.idpProviders.delete()": [
+      "org idp delete"
+    ],
+    "k9o.org.gate.idpProviders.list()": [
+      "org idp list"
+    ],
+    "k9o.org.gate.roles.grant()": [
+      "org roles grant"
+    ],
+    "k9o.org.gate.roles.list()": [
+      "org roles list"
+    ],
+    "k9o.org.gate.roles.revoke()": [
+      "org roles revoke"
+    ],
+    "k9o.org.get()": [
+      "org get"
+    ],
+    "k9o.org.groups.get()": [
+      "org groups get"
+    ],
+    "k9o.org.groups.list()": [
+      "org groups list"
+    ],
+    "k9o.org.members.invite()": [
+      "org members invite"
+    ],
+    "k9o.org.members.list()": [
+      "org members list"
+    ],
+    "k9o.org.members.remove()": [
+      "org members remove"
+    ],
+    "k9o.org.smtp.set()": [
+      "org smtp set"
+    ],
+    "k9o.org.smtp.test()": [
+      "org smtp test"
+    ],
+    "k9o.org.smtp.unset()": [
+      "org smtp unset"
+    ],
+    "k9o.policies.create()": [
+      "policy apply"
+    ],
+    "k9o.policies.current()": [
+      "policy current"
+    ],
+    "k9o.policies.get()": [
+      "policy get"
+    ],
+    "k9o.policies.list()": [
+      "policy list"
+    ],
+    "k9o.policies.publish()": [
+      "policy publish"
+    ],
+    "k9o.policies.validate()": [
+      "policy validate"
+    ],
+    "k9o.projects.create()": [
+      "project create",
+      "init"
+    ],
+    "k9o.projects.get()": [
+      "project get"
+    ],
+    "k9o.projects.list()": [
+      "project list",
+      "init"
+    ],
+    "k9o.query()": [
+      "query"
+    ],
+    "k9o.rollups.list()": [
+      "rollups list"
+    ],
+    "k9o.rollups.read()": [
+      "rollups read"
+    ],
+    "k9o.rollups.subscribe()": [
+      "rollups subscribe"
+    ],
+    "k9o.schedules.create()": [
+      "schedule create"
+    ],
+    "k9o.schedules.delete()": [
+      "schedule delete"
+    ],
+    "k9o.schedules.get()": [
+      "schedule get"
+    ],
+    "k9o.schedules.list()": [
+      "schedule list"
+    ],
+    "k9o.schedules.runNow()": [
+      "schedule run-now"
+    ],
+    "k9o.schedules.runs()": [
+      "schedule runs"
+    ],
+    "k9o.schedules.update()": [
+      "schedule update"
+    ],
+    "k9o.schema.collections.list()": [
+      "schema collections"
+    ],
+    "k9o.search()": [
+      "search"
+    ],
+    "k9o.storage.createBucket()": [
+      "storage buckets create"
+    ],
+    "k9o.storage.deleteBucket()": [
+      "storage buckets delete"
+    ],
+    "k9o.storage.from('<bucket>').createSignedUrl()": [
+      "storage objects sign"
+    ],
+    "k9o.storage.from('<bucket>').list()": [
+      "storage objects list"
+    ],
+    "k9o.storage.from('<bucket>').remove()": [
+      "storage objects delete"
+    ],
+    "k9o.storage.from('<bucket>').upload()": [
+      "storage objects upload"
+    ],
+    "k9o.storage.getBucket()": [
+      "storage buckets get"
+    ],
+    "k9o.storage.listBuckets()": [
+      "storage buckets list"
+    ],
+    "k9o.storage.locations.retire()": [
+      "storage locations retire"
+    ],
+    "k9o.storage.locations.test()": [
+      "storage locations test"
+    ],
+    "k9o.storage.updateBucket()": [
+      "storage buckets update"
+    ],
+    "k9o.streams.create()": [
+      "stream create"
+    ],
+    "k9o.streams.delete()": [
+      "stream delete"
+    ],
+    "k9o.streams.get()": [
+      "stream get"
+    ],
+    "k9o.streams.list()": [
+      "stream list"
+    ],
+    "k9o.streams.publish()": [
+      "stream publish"
+    ],
+    "k9o.streams.replay()": [
+      "stream replay"
+    ],
+    "k9o.streams.subscribe()": [
+      "stream tail"
+    ],
+    "k9o.vectors.nearest()": [
+      "vectors nearest"
+    ],
+    "k9o.vectors.upsert()": [
+      "vectors upsert"
+    ]
+  },
+  "restRouteIndex": {
+    "DELETE /@{projectSlug}/extensions-admin/{slug}/disable": [
+      "ext-admin disable"
+    ],
+    "GET /@{projectSlug}/extensions-admin": [
+      "ext-admin list"
+    ],
+    "GET /@{projectSlug}/extensions-admin/{slug}": [
+      "ext-admin config"
+    ],
+    "PATCH /@{projectSlug}/extensions-admin/{slug}/config": [
+      "ext-admin config"
+    ],
+    "POST /@{projectSlug}/extensions-admin/{slug}/enable": [
+      "ext-admin enable"
+    ]
+  }
+}
